@@ -7,4 +7,4 @@ Allow: /
 User-agent: GPTBot
 Disallow: /
 
-# Sitemap: agregar al definir dominio canónico y ejecutar herramientas/finalizar_dominio.py
+Sitemap: https://mxoptica.com/sitemap.xml
