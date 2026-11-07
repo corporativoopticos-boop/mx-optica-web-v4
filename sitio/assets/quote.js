@@ -28,6 +28,12 @@
   };
   $fields.forEach(id => $(id)?.addEventListener('change', summary));
   $('detalle')?.addEventListener('input', summary);
+  let preparedUrl='';
+  $('wa-send')?.addEventListener('click', function(ev){
+    if (!preparedUrl) return;
+    ev.preventDefault();
+    window.open(preparedUrl,'_blank','noopener,noreferrer');
+  });
   form.addEventListener('submit',function(ev){
     ev.preventDefault();
     const tipo = labelOf('tipo-lente'); const tratamiento = labelOf('tratamiento');
@@ -42,7 +48,10 @@
       'Referencia de origen: web MX Óptica / '+getSource(),
       '¿Me ayudan con una cotización?'].join('\n');
     const url='https://wa.me/522294090925?text='+encodeURIComponent(msg);
-    const link=$('wa-send'); if (link) { link.href=url; link.hidden=false; }
+    // El href queda sin el texto del mensaje para que ninguna herramienta de medición
+    // (p. ej. clics salientes de GA4) registre la consulta escrita por el cliente.
+    preparedUrl=url;
+    const link=$('wa-send'); if (link) { link.hidden=false; }
     // Solo se abre WhatsApp por la acción explícita del cliente.
     window.open(url,'_blank','noopener,noreferrer');
   });
