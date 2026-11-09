@@ -400,3 +400,14 @@ textarea.field{min-height:92px;resize:vertical;padding-right:14px}
   .trt-grid{grid-template-columns:1fr 1fr}
   .promo-bf-actions .btn{flex:1 1 100%}
 }
+/* V5.1b · Condiciones Buen Fin y recargos por graduación */
+ul.promo-bf-cond{list-style:none;padding:0;margin:8px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 18px;color:#e2f7fb;font-size:.92rem;max-width:760px}
+ul.promo-bf-cond li{display:flex;gap:8px;align-items:flex-start}
+ul.promo-bf-cond li::before{content:"•";color:#f3d391;font-weight:900}
+.grad-card{margin-top:18px;max-width:640px}
+.grad-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:.98rem}
+.grad-table th{text-align:left;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--aqua-deep);padding:8px 10px;border-bottom:2px solid #a9d6e1}
+.grad-table td{padding:9px 10px;border-bottom:1px solid #d3ebf0}
+.grad-table td:last-child,.grad-table th:last-child{text-align:right;font-weight:800;color:var(--navy)}
+@media (max-width:600px){ul.promo-bf-cond{grid-template-columns:1fr;font-size:.9rem}}
+#grad-hint{margin:-6px 0 16px}

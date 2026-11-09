@@ -38,7 +38,7 @@
     <div class="promo-bf-copy">
       <p class="promo-bf-state"><span data-promo-state>Próximamente</span> · 13 al 17 de noviembre de 2026</p>
       <h2 id="bf-title">Buen Fin: 2 pares completos por <span data-promo-price>{{BF}}</span></h2>
-      <p class="promo-bf-cond" data-promo-cond>Condiciones por confirmar en sucursal. No se combina con la promoción de $980.</p>
+      <ul class="promo-bf-cond" data-promo-cond>{{BFCOND}}</ul>
     </div>
     <div class="promo-bf-actions">
       <button class="btn btn-gold" type="button" data-pick-pkg="buen-fin-2026" hidden>Cotizar promoción <span class="arrow" aria-hidden="true">→</span></button>
@@ -78,6 +78,8 @@
     <article class="card card-hover trt-card combo"><span class="kicker">Material · monofocal</span><h3>Super Hi-Index</h3><p>La opción más delgada. No se combina con Hi-Index.</p><button class="card-cta tariff" type="button" data-pick-mat="super-hi-index"><span data-mat-price="super-hi-index">{{M:super-hi-index}}</span> · Elegir</button></article>
   </div>
   <p class="footnote reveal">Hi-Index y Super Hi-Index son excluyentes y se cotizan en línea solo para monofocales; en bifocales y progresivos se cotizan en sucursal.</p>
+  <div class="card grad-card reveal"><h3>Recargo por graduación · solo monofocales</h3><p>Se aplica un solo escalón según tu graduación más alta. Es independiente del material Hi-Index y no aplica a bifocales ni progresivos.</p>
+    <table class="grad-table"><thead><tr><th scope="col">Graduación más alta</th><th scope="col">Recargo</th></tr></thead><tbody>{{GRADROWS}}</tbody></table></div>
 </div></section>
 
 <section class="section section-white why" aria-labelledby="why-title"><div class="wrap">
@@ -131,11 +133,14 @@
           <label class="opt"><input type="radio" name="material" value="super-hi-index"><span class="opt-name">Super Hi-Index</span><span class="opt-tag">{{M:super-hi-index}}</span></label>
         </div><p class="hint" id="mat-note" aria-live="polite">Elige uno: Hi-Index y Super Hi-Index no se combinan.</p></fieldset>
       <div class="steps-2">
-        <div class="step"><label for="receta"><span class="step-n">4</span>Graduación</label>
-          <select class="field" id="receta"><option value="tengo-receta">Tengo receta</option><option value="receta-especial">Mi graduación es alta o especial</option><option value="necesito-examen">Quiero el examen visual gratuito</option><option value="actualizar">Necesito actualizarla</option></select></div>
-        <div class="step"><label for="sucursal"><span class="step-n">5</span>Sucursal</label>
-          <select class="field" id="sucursal"><option value="plaza-bravo">Plaza Bravo · Veracruz Centro</option><option value="plaza-maryn">Plaza Maryn · Boca del Río</option></select></div>
+        <div class="step"><label for="graduacion"><span class="step-n">4</span>Graduación más alta</label>
+          <select class="field" id="graduacion" aria-describedby="grad-hint"><option value="nose">No sé / no tengo receta</option>{{GRADOPTS}}</select></div>
+        <div class="step"><label for="astigmatismo"><span class="step-n">5</span>Astigmatismo</label>
+          <select class="field" id="astigmatismo"><option value="nose">No sé</option><option value="hasta2">Hasta 2.00 D o sin astigmatismo</option><option value="mas2">Más de 2.00 D</option></select></div>
       </div>
+      <p class="hint" id="grad-hint">Usa el número más alto de tu receta (columna ESF, positivo o negativo). En monofocales define el recargo por graduación. Si no tienes receta, pide tu examen visual gratuito.</p>
+      <div class="step"><label for="sucursal"><span class="step-n">6</span>Sucursal</label>
+        <select class="field" id="sucursal"><option value="plaza-bravo">Plaza Bravo · Veracruz Centro</option><option value="plaza-maryn">Plaza Maryn · Boca del Río</option></select></div>
       <details class="step more"><summary>Agregar un comentario (opcional)</summary>
         <label class="sr-only" for="detalle">Comentario</label>
         <textarea class="field" id="detalle" maxlength="500" placeholder="Ej.: quiero cambiar las micas de mis armazones actuales…"></textarea>
@@ -168,8 +173,9 @@
   <div class="faq reveal">
     <details><summary>¿Cuánto cuestan los lentes graduados en MX Óptica?</summary><p>Monofocal Blue Ray desde {{P:mono-br}} (promoción desde {{P:mono-br-promo}}), Bifocal desde {{P:bifocal}} y Progresivo desde {{P:progresivo}}. Todos los precios son «desde» y se confirman al validar tu graduación.</p></details>
     <details><summary>¿La promoción de $980 incluye antirreflejante?</summary><p>No. Incluye Blue Ray, no incluye antirreflejante y no se acumula con otras promociones. Si quieres antirreflejante, el paquete Monofocal Blue Ray + Antirreflejante está desde {{P:mono-br-ar}}.</p></details>
-    <details data-promo="buen-fin-2026" hidden><summary>¿Qué es la promoción Buen Fin?</summary><p>Dos pares completos por {{BF}}, vigente del 13 al 17 de noviembre de 2026. No se combina con la promoción de $980. Las condiciones se confirman en sucursal.</p></details>
+    <details data-promo="buen-fin-2026" hidden><summary>¿Qué es la promoción Buen Fin?</summary><p>Dos pares completos por {{BF}}, del 13 al 17 de noviembre de 2026. Primer par con armazón de marca participante y antirreflejante; segundo par de línea con micas monofocales sencillas sin tratamientos. Astigmatismo hasta 2.00 D, modelos sujetos a disponibilidad, sin bifocales ni progresivos; graduaciones especiales sujetas a valoración. No se combina con la promoción de $980.</p></details>
     <details><summary>¿El examen de la vista tiene costo?</summary><p>El examen visual es gratuito. Escríbenos por WhatsApp para confirmar horario y disponibilidad en tu sucursal.</p></details>
+    <details><summary>¿Hay recargo por graduación?</summary><p>Solo en monofocales: hasta ±2.00 D sin recargo; de ±2.25 a ±4.00 D {{G:g1}}; de ±4.25 a ±6.00 D {{G:g2}}; de ±6.25 a ±8.00 D {{G:g3}}; de ±8.25 a ±10.00 D {{G:g4}}; desde ±10.25 D {{G:g5}}. Se aplica un solo escalón y no aplica a bifocales ni progresivos. La promoción de $980 no acumula recargos automáticamente.</p></details>
     <details><summary>¿Qué son Hi-Index y Super Hi-Index?</summary><p>Materiales más delgados y ligeros para graduaciones altas: Hi-Index {{M:hi-index}} y Super Hi-Index {{M:super-hi-index}} sobre el precio de un paquete monofocal. Se elige uno u otro; en bifocales y progresivos se cotizan en sucursal.</p></details>
     <details><summary>¿Dónde preparan mis lentes?</summary><p>Contamos con laboratorio propio para la preparación de tus micas.</p></details>
     <details><summary>¿Dónde están las sucursales?</summary><p>Plaza Bravo: Nicolás Bravo 823, locales 21 y 22, Veracruz Centro. Plaza Maryn: Calzada Costa Verde 563, local 112, Boca del Río. Consulta horarios y mapa en la página de cada sucursal.</p></details>

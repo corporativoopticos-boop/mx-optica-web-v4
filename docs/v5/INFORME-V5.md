@@ -161,3 +161,54 @@ Archivo `pruebas/v5/resultados-v5.1-2026-11-09.json`.
   - Rendimiento.
   - Seguridad.
 - Defecto encontrado y corregido: botones con atributo `hidden` que seguían visibles por `.btn{display:inline-flex}`.
+
+---
+
+# Actualización V5.1b — 2026-11-09
+
+## Buen Fin: condiciones completas (texto del propietario)
+Se publican en la tarjeta de la portada y en las preguntas frecuentes, y se guardan en `precios.js`:
+- Dos pares completos por $2,499.
+- Vigencia: del 13 al 17 de noviembre de 2026.
+- Primer par con armazón de marca participante y antirreflejante.
+- Segundo par de línea con micas monofocales sencillas sin tratamientos.
+- Astigmatismo hasta 2.00 D.
+- Modelos sujetos a disponibilidad.
+- No aplica en bifocales ni progresivos.
+- Graduaciones especiales sujetas a valoración.
+- No se combina con la promoción de $980.
+
+Reglas del cotizador para el Buen Fin:
+- Con astigmatismo mayor a 2.00 D, la cotización queda sujeta a valoración.
+- Con graduación mayor a ±2.00 D o datos desconocidos, se muestra $2,499 con el aviso de valoración.
+- Los adicionales no se suman.
+
+## Recargo por graduación (solo monofocales)
+| Graduación más alta (esfera, cualquier ojo) | Recargo |
+|---|---|
+| Hasta ±2.00 D | $0 |
+| ±2.25 a ±4.00 D | $350 |
+| ±4.25 a ±6.00 D | $550 |
+| ±6.25 a ±8.00 D | $750 |
+| ±8.25 a ±10.00 D | $1,100 |
+| Desde ±10.25 D | $1,550 |
+
+- Se aplica **un solo escalón**, en una línea propia del desglose, independiente de Hi-Index o Super Hi-Index.
+- No aplica a bifocales ni progresivos.
+- Sin graduación conocida, el precio aparece «Desde» el mínimo (base más adicionales) y queda **sujeto a validación**.
+- Promoción de $980: hasta ±2.00 D vale $980. Con recargo, o si falta la graduación, queda sujeta a validación y no acumula nada automáticamente.
+- Privacidad: el cliente elige un **rango**; nunca escribe su receta exacta. GA4 no recibe la graduación, y su `value` excluye el recargo para que no se pueda inferir.
+
+## Video
+Prueba de 3 s de la escena 1: **no se generó**. El motivo y las vías para producirla están en `docs/v5/propuesta-video/PRUEBA-ESCENA1.md`. Queda lista la herramienta `herramientas/v5_video_qc.py`, que mide si un clip tiene movimiento natural o es fotografía animada. El video actual da 0.01 %, es decir, fotografía animada; está en la línea base `docs/v5/propuesta-video/qc-linea-base/`. El video del sitio no cambió.
+
+## Pruebas V5.1b — 145/145
+Archivo `pruebas/v5/resultados-v5.1b-2026-11-09.json`.
+- Recargos: 8 pruebas.
+- Promociones: 10 pruebas.
+- Cálculos: 12 pruebas.
+- Cotizador, WhatsApp y GA4: 13 pruebas.
+- Además: responsive, accesibilidad (0 violaciones), SEO, rendimiento y seguridad.
+
+## Pendiente de confirmar
+- Criterio del recargo: se usa la **esfera más alta de cualquiera de los dos ojos**. Falta confirmar si el cilindro debe sumarse.

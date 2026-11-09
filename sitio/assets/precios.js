@@ -38,7 +38,34 @@ window.MX_PRECIOS = Object.freeze({
       inicio: '2026-11-13T00:00:00-06:00',   /* hora del centro de México */
       fin:    '2026-11-17T23:59:59-06:00',
       combinable: false,                      /* no se mezcla con la promoción de $980 */
-      condiciones: null                       /* PENDIENTE: texto exacto del propietario. null = «Condiciones por confirmar en sucursal». */
+      astigmatismoMaximo: 2.00,
+      /* Condiciones exactas proporcionadas por el propietario (chat de trabajo, 2026-11-09). */
+      condiciones: [
+        'Dos pares completos por $2,499.',
+        'Vigencia: del 13 al 17 de noviembre de 2026.',
+        'Primer par con armazón de marca participante y antirreflejante.',
+        'Segundo par de línea con micas monofocales sencillas sin tratamientos.',
+        'Astigmatismo hasta 2.00 D.',
+        'Modelos sujetos a disponibilidad.',
+        'No aplica en bifocales ni progresivos.',
+        'Graduaciones especiales sujetas a valoración.',
+        'No se combina con la promoción de $980.'
+      ]
     }
+  },
+  /* Recargo por graduación — SOLO monofocales. Se aplica un único escalón (nunca se acumulan) y es
+     independiente de los materiales Hi-Index / Super Hi-Index. No aplica a bifocales ni progresivos.
+     Si no se conoce la graduación, el precio queda sujeto a validación. */
+  recargosGraduacion: {
+    aplicaA: ['monofocal'],
+    criterio: 'Graduación más alta en valor absoluto (esfera) de cualquiera de los dos ojos.',
+    escalones: [
+      { id: 'g0', etiqueta: 'Hasta ±2.00 D',      recargo: 0 },
+      { id: 'g1', etiqueta: '±2.25 a ±4.00 D',    recargo: 350 },
+      { id: 'g2', etiqueta: '±4.25 a ±6.00 D',    recargo: 550 },
+      { id: 'g3', etiqueta: '±6.25 a ±8.00 D',    recargo: 750 },
+      { id: 'g4', etiqueta: '±8.25 a ±10.00 D',   recargo: 1100 },
+      { id: 'g5', etiqueta: 'Desde ±10.25 D',     recargo: 1550 }
+    ]
   }
 });

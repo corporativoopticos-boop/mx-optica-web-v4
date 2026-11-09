@@ -1,0 +1,30 @@
+{
+ "clip": "actual-3s.mp4",
+ "especificacion": {
+  "duracion_s": 3.083,
+  "ancho": 720,
+  "alto": 1280,
+  "fps": 24.0,
+  "codec": "h264",
+  "audio": false,
+  "bytes": 139261
+ },
+ "controles": {
+  "duracion_2.5_a_3.5s": true,
+  "vertical_9_16": true,
+  "fps_24_a_30": true,
+  "sin_audio": true
+ },
+ "movimiento": {
+  "pct_pixeles_no_rigidos_p90": 0.01,
+  "pct_pixeles_no_rigidos_mediana": 0.0,
+  "pct_pixeles_cambiados_sin_alinear_mediana": 66.25,
+  "umbral": 1.0,
+  "veredicto": "FOTOGRAFÍA ANIMADA (todo el movimiento se explica con zoom/desplazamiento de una imagen fija)"
+ },
+ "version_web": {
+  "archivo": "escena1-revision.mp4",
+  "bytes": 215190
+ },
+ "identidad": "REQUIERE REVISIÓN VISUAL DEL PROPIETARIO con hoja-identidad.jpg (rostro, ojos, armazón dorado, arete, cabello, sonrisa, tono de piel)."
+}

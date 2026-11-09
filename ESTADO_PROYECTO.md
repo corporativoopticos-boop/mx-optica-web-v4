@@ -47,3 +47,4 @@ Indexabilidad técnica no garantiza indexación ni recomendación por ChatGPT. N
 - Examen visual gratuito, laboratorio propio, mapas bajo demanda, WhatsApp prellenado, cotizador compacto y preguntas frecuentes. Horarios sin cambios.
 - Video: solo propuesta (`docs/v5/PROPUESTA-VIDEO-V5.1.md`); el original sigue publicado como respaldo.
 - 134/134 pruebas.
+- V5.1b: condiciones completas del Buen Fin y tabla de recargo por graduación (solo monofocales, un escalón). 145/145 pruebas. La prueba de video de 3 s está pendiente de un generador de imagen a video (ver `docs/v5/propuesta-video/PRUEBA-ESCENA1.md`).

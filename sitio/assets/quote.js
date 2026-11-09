@@ -19,23 +19,28 @@
     return 'finalizada';
   }
 
+  /* sel = {paquete, tratamientos[], material, graduacion: 'g0'…'g5'|'nose', astig: 'hasta2'|'mas2'|'nose'} */
   function calc(table, sel, now){
     const T = table || {}, P = T.paquetes || {}, TR = T.tratamientos || {}, M = T.materiales || {}, PR = T.promociones || {};
-    const v = (estado, total, motivo, extra) => Object.assign({estado, total, motivo, desglose: [], incluidos: []}, extra || {});
+    const RG = T.recargosGraduacion || {escalones: [], aplicaA: []};
+    const v = (estado, total, motivo, extra) => Object.assign({estado, total, motivo, desglose: [], incluidos: [], minimo: null, valorAnalitica: null}, extra || {});
     const trts = [...new Set(sel.tratamientos || [])];
     const matId = sel.material || 'estandar';
-    const revision = sel.receta && sel.receta !== 'tengo-receta';
+    const tier = RG.escalones.find(e => e.id === sel.graduacion) || null;
 
+    /* Promoción temporal (Buen Fin) */
     const promo = PR[sel.paquete];
     if (promo) {
       const st = promoEstado(promo, now);
       if (st === 'proxima') return v('validacion', null, 'La promoción Buen Fin inicia el 13 de noviembre de 2026. Puedes solicitar información desde ahora.');
       if (st === 'finalizada' || !ok(promo)) return v('validacion', null, 'Esta promoción ya no está vigente. La óptica te ofrecerá la mejor opción disponible.');
+      if (sel.astig === 'mas2') return v('validacion', null, 'La promoción aplica con astigmatismo hasta 2.00 D. Tu caso se valora en sucursal.');
       const extras = trts.length > 0 || matId !== 'estandar';
+      const revision = !tier || tier.recargo > 0 || sel.astig !== 'hasta2';
       return v('promo', promo.precio, extras
         ? 'Promoción no combinable: los adicionales o materiales especiales se cotizan por separado en sucursal.'
-        : (promo.condiciones || 'Precio de promoción para 2 pares completos. Condiciones por confirmar en sucursal.'),
-        {desglose: [{concepto: promo.nombre, importe: promo.precio}], pares: 2});
+        : revision ? 'Precio de promoción. Graduaciones especiales sujetas a valoración en sucursal.' : 'Precio de promoción para 2 pares completos, según condiciones.',
+        {desglose: [{concepto: promo.nombre, importe: promo.precio}], pares: 2, revision, valorAnalitica: promo.precio});
     }
 
     const pkg = P[sel.paquete];
@@ -58,10 +63,17 @@
     const desglose = [{concepto: pkg.nombre, importe: pkg.precio}];
     adicionales.forEach(t => desglose.push({concepto: TR[t].nombre, importe: TR[t].precio}));
     if (mat.precio > 0) desglose.push({concepto: 'Material ' + mat.nombre, importe: mat.precio});
+    const sinGrad = desglose.reduce((a, d) => a + d.importe, 0);
+
+    /* Recargo por graduación: solo monofocales, un único escalón. */
+    if ((RG.aplicaA || []).includes(pkg.tipo)) {
+      if (!tier) return v('validacion', null, 'Indica tu graduación más alta para calcular el recargo. Mientras tanto, el precio está sujeto a validación.', {incluidos, minimo: sinGrad, desglose, valorAnalitica: sinGrad});
+      if (pkg.admiteAdicionales === false && tier.recargo > 0)
+        return v('validacion', null, 'La promoción de $980 no acumula recargos automáticamente. La óptica valorará tu graduación y te ofrecerá la mejor opción.', {incluidos, minimo: sinGrad, desglose, valorAnalitica: sinGrad});
+      if (tier.recargo > 0) desglose.push({concepto: 'Recargo por graduación (' + tier.etiqueta + ')', importe: tier.recargo});
+    }
     const total = desglose.reduce((a, d) => a + d.importe, 0);
-    return v('desde', total, revision
-      ? 'Precio desde. Tu graduación requiere revisión y podría cambiar material o precio.'
-      : 'Precio desde. Se confirma al validar tu graduación en sucursal.', {desglose, incluidos, revision: !!revision});
+    return v('desde', total, 'Precio desde. Se confirma al validar tu receta en sucursal.', {desglose, incluidos, valorAnalitica: sinGrad});
   }
   window.MXQuote = {calc, promoEstado};
 
@@ -86,7 +98,8 @@
     box.hidden = false;
     const st = box.querySelector('[data-promo-state]'); if (st) st.textContent = bfSt === 'vigente' ? 'Promoción vigente' : 'Próximamente';
     const pr = box.querySelector('[data-promo-price]'); if (pr && ok(bf)) pr.textContent = money(bf.precio);
-    const cd = box.querySelector('[data-promo-cond]'); if (cd) cd.textContent = bf.condiciones || 'Condiciones por confirmar en sucursal. No se combina con la promoción de $980.';
+    const cd = box.querySelector('[data-promo-cond]');
+    if (cd && Array.isArray(bf.condiciones)) { cd.replaceChildren(...bf.condiciones.map(c => { const li = document.createElement('li'); li.textContent = c; return li; })); }
     const wa = box.querySelector('a[href^="' + WA + '"]');
     if (wa) wa.href = WA + '?text=' + encodeURIComponent(bfSt === 'vigente'
       ? 'Hola, me interesa la promoción Buen Fin de 2 pares completos por $2,499. ¿Qué condiciones aplican?'
@@ -104,7 +117,7 @@
   const matRadios = [...form.querySelectorAll('input[name="material"]')];
   const labelOf = (el) => el?.selectedOptions?.[0]?.textContent?.trim() || 'Sin especificar';
   const matValue = () => (matRadios.find(r => r.checked) || {}).value || 'estandar';
-  const selection = () => ({paquete: pkgSel.value, tratamientos: trtBoxes.filter(b => b.checked && !b.disabled).map(b => b.value), material: matValue(), receta: $('receta').value});
+  const selection = () => ({paquete: pkgSel.value, tratamientos: trtBoxes.filter(b => b.checked && !b.disabled).map(b => b.value), material: matValue(), graduacion: $('graduacion').value, astig: $('astigmatismo').value});
 
   function syncControls(){
     const pkg = table.paquetes[pkgSel.value], promo = !!table.promociones[pkgSel.value];
@@ -130,12 +143,13 @@
     $('res-tipo').textContent = labelOf(pkgSel).replace(' (próximamente)', '');
     $('res-tratamiento').textContent = trtText();
     $('res-material').textContent = matText();
-    $('res-receta').textContent = labelOf($('receta'));
+    $('res-receta').textContent = labelOf($('graduacion')) + ' · astigmatismo: ' + labelOf($('astigmatismo'));
     $('res-sucursal').textContent = labelOf($('sucursal'));
     last = calc(table, selection(), now());
     const priced = last.estado === 'desde' || last.estado === 'promo';
-    $('res-precio').textContent = priced ? (last.estado === 'desde' ? 'Desde ' : '') + money(last.total) : 'Por confirmar';
-    $('res-estado').textContent = last.estado === 'promo' ? 'Promoción Buen Fin · 2 pares' : priced ? 'Precio desde · sujeto a validación' : 'Cotización por confirmar';
+    const partial = !priced && Number.isFinite(last.minimo);
+    $('res-precio').textContent = priced ? (last.estado === 'desde' ? 'Desde ' : '') + money(last.total) : partial ? 'Desde ' + money(last.minimo) : 'Por confirmar';
+    $('res-estado').textContent = last.estado === 'promo' ? 'Promoción Buen Fin · 2 pares' : priced ? 'Precio desde · sujeto a validación' : partial ? 'Sujeto a validación de graduación' : 'Cotización por confirmar';
     $('res-estado').classList.toggle('is-ok', priced);
     $('res-explica').textContent = last.motivo;
     const lp = $('live-precio'); if (lp) lp.textContent = $('res-precio').textContent;
@@ -179,12 +193,14 @@
     const detalle = $('detalle').value.trim().slice(0, 500);
     const precio = last.estado === 'promo' ? 'Precio de promoción mostrado: ' + money(last.total) + ' MXN (2 pares)'
       : last.estado === 'desde' ? 'Precio mostrado: desde ' + money(last.total) + ' MXN (sujeto a validación de graduación)'
+      : Number.isFinite(last.minimo) ? 'Precio: desde ' + money(last.minimo) + ' MXN más recargo según graduación (sujeto a validación)'
       : 'Precio: por confirmar';
     const msg = ['👋 ¡Hola! Quiero cotizar mis lentes en MX Óptica.',
       'Paquete: ' + labelOf(pkgSel),
       'Tratamientos: ' + trtText(),
       'Material: ' + matText(),
-      'Graduación: ' + labelOf($('receta')),
+      'Graduación más alta: ' + labelOf($('graduacion')),
+      'Astigmatismo: ' + labelOf($('astigmatismo')),
       'Sucursal: ' + labelOf($('sucursal')),
       precio,
       'Consulta: ' + (detalle || 'Quisiera confirmar precio y disponibilidad.'),

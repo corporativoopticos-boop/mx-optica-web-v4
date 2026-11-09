@@ -28,7 +28,8 @@
     const trt = [...form.querySelectorAll('input[name="trt"]:checked')].map(b => slug(b.value)).sort().join('+') || 'ninguno';
     const q = window.MXQuote && window.MXQuote.actual ? window.MXQuote.actual() : null;
     const params = { tipo_lente: val('tipo-lente'), material: mat ? slug(mat.value) : 'estandar', tratamiento: trt, sucursal: val('sucursal') };
-    if (q && (q.estado === 'desde' || q.estado === 'promo') && Number.isFinite(q.total)) { params.value = q.total; params.currency = 'MXN'; }
+    // value excluye el recargo por graduación: así GA4 no puede inferir datos de la receta.
+    if (q && Number.isFinite(q.valorAnalitica)) { params.value = q.valorAnalitica; params.currency = 'MXN'; }
     track('cotizacion_solicitud', params);
   });
 })();

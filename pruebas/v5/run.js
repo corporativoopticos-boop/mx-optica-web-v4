@@ -86,8 +86,8 @@ const isGoogle = (u) => /googletagmanager|google-analytics/.test(u);
     {
       const ctx = await browser.newContext(); const page = await ctx.newPage(); await page.goto(BASE, { waitUntil: 'load' });
       const R = await page.evaluate(() => {
-        const T = window.MX_PRECIOS, c = (paquete, tratamientos = [], material = 'estandar', receta = 'tengo-receta', now) => window.MXQuote.calc(T, { paquete, tratamientos, material, receta }, now ? new Date(now) : new Date('2026-11-09T12:00:00-06:00'));
-        const s = (r) => ({ e: r.estado, t: r.total, m: r.motivo, d: r.desglose.map(x => x.importe) });
+        const T = window.MX_PRECIOS, c = (paquete, tratamientos = [], material = 'estandar', graduacion = 'g0', now, astig = 'hasta2') => window.MXQuote.calc(T, { paquete, tratamientos, material, graduacion, astig }, now ? new Date(now) : new Date('2026-11-09T12:00:00-06:00'));
+        const s = (r) => ({ e: r.estado, t: r.total, m: r.motivo, d: r.desglose.map(x => x.importe), min: r.minimo, va: r.valorAnalitica, rev: !!r.revision });
         return {
           promo: s(c('mono-br-promo')), promoAR: s(c('mono-br-promo', ['antirreflejante'])), promoHI: s(c('mono-br-promo', [], 'hi-index')), promoBR: s(c('mono-br-promo', ['blue-ray'])),
           brAR: s(c('mono-br', ['antirreflejante'])), brAR_pkg: s(c('mono-br-ar')), brDup: s(c('mono-br', ['blue-ray'])), brarDup: s(c('mono-br-ar', ['antirreflejante', 'blue-ray', 'antirreflejante'])),
@@ -96,10 +96,15 @@ const isGoogle = (u) => /googletagmanager|google-analytics/.test(u);
           bifAR: s(c('bifocal', ['antirreflejante'])), bifAR_pkg: s(c('bifocal-ar')), progAR: s(c('progresivo', ['antirreflejante'])), progAR_pkg: s(c('progresivo-ar')),
           progFull: s(c('progresivo-ar', ['blue-ray', 'fotocromatico'])), bifBR: s(c('bifocal-ar', ['blue-ray'])),
           monoBasico: s(c('mono-basico')), fotoCompleto: s(c('foto-completo')), examen: s(c('examen-visual')), micas: s(c('cambio-de-micas')),
-          especial: { ...s(c('mono-br', [], 'estandar', 'receta-especial')), rev: c('mono-br', [], 'estandar', 'receta-especial').revision },
-          bfAntes: s(c('buen-fin-2026', [], 'estandar', 'tengo-receta', '2026-11-12T23:59:59-06:00')), bfInicio: s(c('buen-fin-2026', [], 'estandar', 'tengo-receta', '2026-11-13T00:00:00-06:00')),
-          bfFin: s(c('buen-fin-2026', [], 'estandar', 'tengo-receta', '2026-11-17T23:59:59-06:00')), bfDespues: s(c('buen-fin-2026', [], 'estandar', 'tengo-receta', '2026-11-18T00:00:00-06:00')),
-          bfExtras: s(c('buen-fin-2026', ['antirreflejante'], 'hi-index', 'tengo-receta', '2026-11-15T12:00:00-06:00')),
+          tiers: ['g0','g1','g2','g3','g4','g5'].map(g => c('mono-br', [], 'estandar', g).total), tierDesglose: s(c('mono-br', [], 'estandar', 'g3')),
+          gradHI: s(c('mono-br', [], 'hi-index', 'g3')), gradBRAR: s(c('mono-br-ar', ['fotocromatico'], 'super-hi-index', 'g5')),
+          bifG5: s(c('bifocal', [], 'estandar', 'g5')), progG4: s(c('progresivo-ar', [], 'estandar', 'g4')), bifNose: s(c('bifocal', [], 'estandar', 'nose')),
+          monoNose: s(c('mono-br', ['antirreflejante'], 'estandar', 'nose')), promoG0: s(c('mono-br-promo', [], 'estandar', 'g0')), promoG2: s(c('mono-br-promo', [], 'estandar', 'g2')), promoNose: s(c('mono-br-promo', [], 'estandar', 'nose')),
+          bfAstig: s(c('buen-fin-2026', [], 'estandar', 'g0', '2026-11-15T12:00:00-06:00', 'mas2')), bfOk: s(c('buen-fin-2026', [], 'estandar', 'g0', '2026-11-15T12:00:00-06:00', 'hasta2')), bfG3: s(c('buen-fin-2026', [], 'estandar', 'g3', '2026-11-15T12:00:00-06:00', 'hasta2')), bfAstigNose: s(c('buen-fin-2026', [], 'estandar', 'g0', '2026-11-15T12:00:00-06:00', 'nose')),
+          bfCond: T.promociones['buen-fin-2026'].condiciones,
+          bfAntes: s(c('buen-fin-2026', [], 'estandar', 'g0', '2026-11-12T23:59:59-06:00')), bfInicio: s(c('buen-fin-2026', [], 'estandar', 'g0', '2026-11-13T00:00:00-06:00')),
+          bfFin: s(c('buen-fin-2026', [], 'estandar', 'g0', '2026-11-17T23:59:59-06:00')), bfDespues: s(c('buen-fin-2026', [], 'estandar', 'g0', '2026-11-18T00:00:00-06:00')),
+          bfExtras: s(c('buen-fin-2026', ['antirreflejante'], 'hi-index', 'g0', '2026-11-15T12:00:00-06:00')),
           estados: ['2026-11-12T23:59:59-06:00', '2026-11-13T00:00:00-06:00', '2026-11-17T23:59:59-06:00', '2026-11-18T00:00:00-06:00'].map(d => window.MXQuote.promoEstado(T.promociones['buen-fin-2026'], new Date(d)))
         };
       });
@@ -116,7 +121,16 @@ const isGoogle = (u) => /googletagmanager|google-analytics/.test(u);
       rec('calculos', 'Progresivo AR + Blue Ray + Fotocromático = $3,010; Bifocal AR + BR = $1,764', eq(R.progFull, 3010) && eq(R.bifBR, 1764), [R.progFull, R.bifBR]);
       rec('calculos', 'Monofocal básico y Fotocromático completo → precio por confirmar', R.monoBasico.e === 'validacion' && R.monoBasico.t === null && R.fotoCompleto.e === 'validacion');
       rec('calculos', 'Examen visual → gratuito, sin importe; servicios → personalizado', R.examen.e === 'validacion' && /gratuito/.test(R.examen.m) && R.micas.e === 'validacion');
-      rec('calculos', 'Graduación especial → precio desde con aviso de revisión', eq(R.especial, 1125) && R.especial.rev === true && /revisión/.test(R.especial.m), R.especial);
+      rec('recargos', 'Escalones monofocal: 0 / 350 / 550 / 750 / 1,100 / 1,550 sobre $1,125', JSON.stringify(R.tiers) === JSON.stringify([1125, 1475, 1675, 1875, 2225, 2675]), R.tiers);
+      rec('recargos', 'Un solo escalón por cotización (una sola línea de recargo)', JSON.stringify(R.tierDesglose.d) === JSON.stringify([1125, 750]), R.tierDesglose);
+      rec('recargos', 'Recargo independiente de Hi-Index: $1,125 + Hi-Index $400 + recargo $750 = $2,275 en líneas separadas', R.gradHI.t === 2275 && JSON.stringify(R.gradHI.d) === JSON.stringify([1125, 400, 750]), R.gradHI);
+      rec('recargos', 'BR+AR + fotocromático + Super Hi-Index + recargo ≥10.25 = $1,415+675+1,090+1,550 = $4,730', R.gradBRAR.t === 4730, R.gradBRAR);
+      rec('recargos', 'Sin recargo en bifocales ni progresivos (Bifocal ≥10.25 = $899; Progresivo AR 8.25–10 = $1,760)', R.bifG5.t === 899 && R.progG4.t === 1760 && R.bifNose.e === 'desde', [R.bifG5, R.progG4]);
+      rec('recargos', 'Monofocal sin graduación conocida → sujeto a validación, mínimo desde base + adicionales ($1,415)', R.monoNose.e === 'validacion' && R.monoNose.t === null && R.monoNose.min === 1415 && /graduación/.test(R.monoNose.m), R.monoNose);
+      rec('recargos', 'Promoción $980: hasta 2.00 = $980; con recargo o sin graduación → validación sin sumar', R.promoG0.t === 980 && R.promoG2.e === 'validacion' && R.promoG2.min === 980 && /no acumula/.test(R.promoG2.m) && R.promoNose.e === 'validacion', [R.promoG0, R.promoG2, R.promoNose]);
+      rec('recargos', 'Valor para GA4 excluye el recargo por graduación (no permite inferir la receta)', R.tierDesglose.va === 1125 && R.gradHI.va === 1525, [R.tierDesglose.va, R.gradHI.va]);
+      rec('promociones', 'Buen Fin: astigmatismo >2.00 D → valoración; ≤2.00 y hasta ±2.00 → $2,499 sin revisión; graduación alta o astigmatismo desconocido → $2,499 con aviso de valoración', R.bfAstig.e === 'validacion' && /2\.00 D/.test(R.bfAstig.m) && R.bfOk.e === 'promo' && !R.bfOk.rev && R.bfG3.t === 2499 && R.bfG3.rev && R.bfAstigNose.rev, [R.bfAstig, R.bfOk, R.bfG3]);
+      rec('promociones', 'Buen Fin: 9 condiciones del propietario registradas', R.bfCond.length === 9 && R.bfCond.includes('Astigmatismo hasta 2.00 D.') && R.bfCond.includes('No aplica en bifocales ni progresivos.') && R.bfCond.includes('Segundo par de línea con micas monofocales sencillas sin tratamientos.'), R.bfCond);
       rec('promociones', 'Buen Fin: estados próxima / vigente (inicio y último segundo) / finalizada en hora de México', JSON.stringify(R.estados) === JSON.stringify(['proxima', 'vigente', 'vigente', 'finalizada']), R.estados);
       rec('promociones', 'Buen Fin: sin precio antes y después; $2,499 durante la vigencia', R.bfAntes.e === 'validacion' && R.bfDespues.e === 'validacion' && R.bfInicio.e === 'promo' && R.bfInicio.t === 2499 && R.bfFin.t === 2499);
       rec('promociones', 'Buen Fin no combinable: los adicionales no se suman', R.bfExtras.e === 'promo' && R.bfExtras.t === 2499 && /no combinable/i.test(R.bfExtras.m), R.bfExtras);
@@ -142,6 +156,8 @@ const isGoogle = (u) => /googletagmanager|google-analytics/.test(u);
         : (u.hidden && u.opt === 'removed' && u.faq);
       rec('promociones', `Interfaz Buen Fin ${fecha.slice(0, 10)} → ${esperado}`, okUI, u);
       if (esperado === 'vigente') {
+        const conds = await page.$$eval('section[data-promo] [data-promo-cond] li', l => l.map(x => x.textContent));
+        rec('promociones', 'Buen Fin vigente muestra las 9 condiciones en la portada', conds.length === 9 && conds[2] === 'Primer par con armazón de marca participante y antirreflejante.', conds);
         await page.evaluate(() => document.querySelector('section[data-promo]').scrollIntoView({behavior:'instant',block:'center'})); await page.waitForTimeout(900);
         await page.screenshot({ path: path.join(OUT, 'v51-buenfin-vigente-390.png') });
         await page.click('[data-pick-pkg="buen-fin-2026"]'); await page.waitForTimeout(900);
@@ -163,10 +179,13 @@ const isGoogle = (u) => /googletagmanager|google-analytics/.test(u);
     rec('cotizador', 'Estado inicial: promoción $980, Blue Ray «Incluido», otros adicionales bloqueados, precio desde $980', s0.pkg === 'mono-br-promo' && s0.precio === 'Desde $980' && s0.live === 'Desde $980' && s0.trt.includes('blue-ray:on/bloq:Incluido') && s0.trt.includes('antirreflejante:off/bloq:+$290'), s0);
     await page.selectOption('#tipo-lente', 'mono-br'); await page.check('input[name=trt][value=antirreflejante]'); await page.check('input[name=material][value=hi-index]');
     const s1 = await st();
-    rec('cotizador', 'Monofocal BR + AR + Hi-Index = desde $1,815 con desglose', s1.precio === 'Desde $1,815' && JSON.stringify(s1.desglose) === JSON.stringify(['Monofocal Blue Ray$1,125', 'Antirreflejante$290', 'Material Hi-Index$400']), s1);
+    rec('cotizador', 'Sin graduación: Monofocal BR + AR + Hi-Index → «Desde $1,815» sujeto a validación', s1.precio === 'Desde $1,815' && JSON.stringify(s1.desglose) === JSON.stringify(['Monofocal Blue Ray$1,125', 'Antirreflejante$290', 'Material Hi-Index$400']), s1);
+    await page.selectOption('#graduacion', 'g2');
+    const s1b = await st();
+    rec('cotizador', 'Con graduación ±4.25–6.00: suma un recargo de $550 en línea propia (desde $2,365)', s1b.precio === 'Desde $2,365' && s1b.desglose.includes('Recargo por graduación (±4.25 a ±6.00 D)$550') && /validación/.test(s1b.estado), s1b);
     await page.check('input[name=material][value=super-hi-index]');
     const s2 = await st();
-    rec('cotizador', 'Hi-Index y Super Hi-Index excluyentes en la interfaz (solo uno marcado)', s2.mat.filter(m => m.includes('*')).length === 1 && s2.mat.includes('super-hi-index*') && s2.precio === 'Desde $2,505', s2);
+    rec('cotizador', 'Hi-Index y Super Hi-Index excluyentes en la interfaz (solo uno marcado)', s2.mat.filter(m => m.includes('*')).length === 1 && s2.mat.includes('super-hi-index*') && s2.precio === 'Desde $3,055', s2);
     await page.selectOption('#tipo-lente', 'progresivo-ar');
     const s3 = await st();
     rec('cotizador', 'Al elegir progresivo: material vuelve a estándar y Hi-Index se bloquea; AR queda «Incluido»', s3.mat.includes('estandar*') && s3.mat.includes('hi-index/bloq') && s3.trt.includes('antirreflejante:on/bloq:Incluido') && s3.precio === 'Desde $1,760', s3);
@@ -175,21 +194,21 @@ const isGoogle = (u) => /googletagmanager|google-analytics/.test(u);
     rec('cotizador', 'Tarjeta «Agregar» marca el tratamiento en el cotizador (Progresivo AR + Fotocromático = $2,435)', s4.trt.includes('fotocromatico:on:+$675') && s4.precio === 'Desde $2,435', s4);
     await page.screenshot({ path: path.join(OUT, 'v51-cotizador-390.png') });
     // WhatsApp + GA4
-    await page.selectOption('#tipo-lente', 'mono-br-ar'); await page.selectOption('#sucursal', 'plaza-maryn'); await page.uncheck('input[name=trt][value=fotocromatico]');
+    await page.selectOption('#tipo-lente', 'mono-br-ar'); await page.selectOption('#sucursal', 'plaza-maryn'); await page.selectOption('#graduacion', 'g1'); await page.selectOption('#astigmatismo', 'hasta2'); await page.uncheck('input[name=trt][value=fotocromatico]');
     await page.click('.more summary'); await page.fill('#detalle', 'Soy Ana Prueba, mi tel 2290000000, correo ana@example.com, graduación -6.50');
     const dl0 = await page.evaluate(() => dataLayer.length);
     await page.click('.quote-submit'); await page.waitForTimeout(400);
     const out = await page.evaluate(() => ({ opened: window.__opened, href: document.getElementById('wa-send').getAttribute('href') }));
     const msg = decodeURIComponent((out.opened[0] || '').split('text=')[1] || '');
-    rec('whatsapp', 'Mensaje prellenado con paquete, tratamientos incluidos, material, sucursal y «desde $1,415»', out.opened.length === 1 && /Monofocal Blue Ray \+ Antirreflejante/.test(msg) && /Blue Ray \(incluido\)/.test(msg) && /Antirreflejante \(incluido\)/.test(msg) && /Material: Estándar/.test(msg) && /Plaza Maryn/.test(msg) && /desde \$1,415 MXN/.test(msg), msg);
+    rec('whatsapp', 'Mensaje prellenado con paquete, incluidos, material, graduación, sucursal y «desde $1,765» (con recargo)', out.opened.length === 1 && /Monofocal Blue Ray \+ Antirreflejante/.test(msg) && /Blue Ray \(incluido\)/.test(msg) && /Antirreflejante \(incluido\)/.test(msg) && /Material: Estándar/.test(msg) && /Plaza Maryn/.test(msg) && /Graduación más alta: ±2\.25 a ±4\.00 D/.test(msg) && /desde \$1,765 MXN/.test(msg), msg);
     rec('whatsapp', '#wa-send sin el mensaje en el href', out.href === 'https://wa.me/522294090925');
     await page.click('.wa-float'); await page.waitForTimeout(200);
     const ev = await page.evaluate((n) => dataLayer.slice(n).map(x => Array.from(x)), dl0); const dlAll = await page.evaluate(() => JSON.stringify(dataLayer));
     const cot = ev.filter(e => e[0] === 'event' && e[1] === 'cotizacion_solicitud'), wa = ev.filter(e => e[0] === 'event' && e[1] === 'whatsapp_click');
     rec('ga4', 'Una sola configuración G-1YKC3ZT1P1', (await page.evaluate(() => dataLayer.filter(x => x[0] === 'config' && x[1] === 'G-1YKC3ZT1P1').length)) === 1);
-    rec('ga4', 'cotizacion_solicitud una vez con listas cerradas + valor estimado (1415 MXN)', cot.length === 1 && JSON.stringify(cot[0][2]) === JSON.stringify({ tipo_lente: 'mono_br_ar', material: 'estandar', tratamiento: 'antirreflejante+blue_ray', sucursal: 'plaza_maryn', value: 1415, currency: 'MXN' }), cot);
+    rec('ga4', 'cotizacion_solicitud con listas cerradas y value 1415 (sin recargo de graduación)', cot.length === 1 && JSON.stringify(cot[0][2]) === JSON.stringify({ tipo_lente: 'mono_br_ar', material: 'estandar', tratamiento: 'antirreflejante+blue_ray', sucursal: 'plaza_maryn', value: 1415, currency: 'MXN' }), cot);
     rec('ga4', 'whatsapp_click una vez por clic (flotante)', wa.length === 1 && wa[0][2].link_location === 'flotante', wa);
-    rec('ga4', 'Sin datos personales en dataLayer', !/Ana|2290000000|example\.com|6\.50|receta/i.test(dlAll));
+    rec('ga4', 'Sin datos personales en dataLayer', !/Ana|2290000000|example\.com|6\.50|receta|graduaci|astigm|±|g1|1765/i.test(dlAll));
     await ctx.close();
     // 4d) Mapa bajo demanda y WhatsApp prellenado de sucursal
     {

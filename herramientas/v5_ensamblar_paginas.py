@@ -9,6 +9,11 @@ def expand(s):
     s=re.sub(r'\{\{T:([\w-]+)\}\}',lambda m:'+'+mx(PR['tratamientos'][m.group(1)]['precio']),s)
     s=re.sub(r'\{\{M:([\w-]+)\}\}',lambda m:('+'+mx(PR['materiales'][m.group(1)]['precio'])) if PR['materiales'][m.group(1)]['precio'] else 'Incluido',s)
     s=s.replace('{{BF}}',mx(PR['promociones']['buen-fin-2026']['precio']))
+    G=PR['recargosGraduacion']['escalones']
+    s=s.replace('{{GRADOPTS}}',''.join(f'<option value="{e["id"]}">{e["etiqueta"]}</option>' for e in G))
+    s=s.replace('{{GRADROWS}}',''.join(f'<tr><td>{e["etiqueta"]}</td><td>{("+"+mx(e["recargo"])) if e["recargo"] else "Sin recargo"}</td></tr>' for e in G))
+    s=re.sub(r'\{\{G:(g\d)\}\}',lambda m:'+'+mx(next(e for e in G if e['id']==m.group(1))['recargo']),s)
+    s=s.replace('{{BFCOND}}',''.join(f'<li>{c}</li>' for c in PR['promociones']['buen-fin-2026']['condiciones']))
     s=s.replace('{{MIN}}',mx(min(p['precio'] for p in PR['paquetes'].values() if okp(p))))
     assert '{{' not in s, re.findall(r'\{\{[^}]*\}\}',s)
     return s
