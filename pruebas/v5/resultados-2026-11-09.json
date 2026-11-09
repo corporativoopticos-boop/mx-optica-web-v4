@@ -1,0 +1,1061 @@
+{
+ "fecha": "2026-11-09T01:18:14.850Z",
+ "total": 113,
+ "fallos": 0,
+ "results": [
+  {
+   "area": "responsive",
+   "name": "360px / sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 360,
+    "iw": 360,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "360px / sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "360px /sucursales/plaza-bravo/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 360,
+    "iw": 360,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "360px /sucursales/plaza-bravo/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "360px /sucursales/plaza-maryn/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 360,
+    "iw": 360,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "360px /sucursales/plaza-maryn/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "360px /servicios/lentes-graduados/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 360,
+    "iw": 360,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "360px /servicios/lentes-graduados/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "360px /servicios/cambio-de-micas/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 360,
+    "iw": 360,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "360px /servicios/cambio-de-micas/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "360px /servicios/examen-de-la-vista/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 360,
+    "iw": 360,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "360px /servicios/examen-de-la-vista/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "360px /servicios/lentes-progresivos/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 360,
+    "iw": 360,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "360px /servicios/lentes-progresivos/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "390px / sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 390,
+    "iw": 390,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "390px / sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "390px /sucursales/plaza-bravo/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 390,
+    "iw": 390,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "390px /sucursales/plaza-bravo/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "390px /sucursales/plaza-maryn/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 390,
+    "iw": 390,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "390px /sucursales/plaza-maryn/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "390px /servicios/lentes-graduados/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 390,
+    "iw": 390,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "390px /servicios/lentes-graduados/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "390px /servicios/cambio-de-micas/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 390,
+    "iw": 390,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "390px /servicios/cambio-de-micas/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "390px /servicios/examen-de-la-vista/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 390,
+    "iw": 390,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "390px /servicios/examen-de-la-vista/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "390px /servicios/lentes-progresivos/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 390,
+    "iw": 390,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "390px /servicios/lentes-progresivos/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "430px / sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 430,
+    "iw": 430,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "430px / sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "430px /sucursales/plaza-bravo/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 430,
+    "iw": 430,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "430px /sucursales/plaza-bravo/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "430px /sucursales/plaza-maryn/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 430,
+    "iw": 430,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "430px /sucursales/plaza-maryn/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "430px /servicios/lentes-graduados/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 430,
+    "iw": 430,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "430px /servicios/lentes-graduados/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "430px /servicios/cambio-de-micas/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 430,
+    "iw": 430,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "430px /servicios/cambio-de-micas/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "430px /servicios/examen-de-la-vista/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 430,
+    "iw": 430,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "430px /servicios/examen-de-la-vista/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "430px /servicios/lentes-progresivos/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 430,
+    "iw": 430,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "430px /servicios/lentes-progresivos/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "1440px / sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 1440,
+    "iw": 1440,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "1440px / sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "1440px /sucursales/plaza-bravo/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 1440,
+    "iw": 1440,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "1440px /sucursales/plaza-bravo/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "1440px /sucursales/plaza-maryn/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 1440,
+    "iw": 1440,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "1440px /sucursales/plaza-maryn/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "1440px /servicios/lentes-graduados/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 1440,
+    "iw": 1440,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "1440px /servicios/lentes-graduados/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "1440px /servicios/cambio-de-micas/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 1440,
+    "iw": 1440,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "1440px /servicios/cambio-de-micas/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "1440px /servicios/examen-de-la-vista/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 1440,
+    "iw": 1440,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "1440px /servicios/examen-de-la-vista/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "1440px /servicios/lentes-progresivos/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 1440,
+    "iw": 1440,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "1440px /servicios/lentes-progresivos/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "video",
+   "name": "Video se carga y reproduce (readyState≥3, 720×1280)",
+   "pass": true,
+   "detail": {
+    "ready": 4,
+    "paused": false,
+    "playing": true,
+    "vw": 720,
+    "vh": 1280,
+    "src": "hero-v2-background.mp4",
+    "poster": 720,
+    "toggle": true
+   }
+  },
+  {
+   "area": "video",
+   "name": "Póster cargado (720 px) y botón pausar visible",
+   "pass": true,
+   "detail": {
+    "ready": 4,
+    "paused": false,
+    "playing": true,
+    "vw": 720,
+    "vh": 1280,
+    "src": "hero-v2-background.mp4",
+    "poster": 720,
+    "toggle": true
+   }
+  },
+  {
+   "area": "video",
+   "name": "Botón pausa detiene el video",
+   "pass": true,
+   "detail": [
+    true,
+    "Reproducir video"
+   ]
+  },
+  {
+   "area": "video",
+   "name": "prefers-reduced-motion: sin video, póster visible, contenido sin animación oculta",
+   "pass": true,
+   "detail": {
+    "video": false,
+    "poster": 720,
+    "revealHidden": 0
+   }
+  },
+  {
+   "area": "menu",
+   "name": "Menú móvil cerrado al inicio",
+   "pass": true
+  },
+  {
+   "area": "menu",
+   "name": "Menú abre y aria-expanded=true",
+   "pass": true
+  },
+  {
+   "area": "menu",
+   "name": "Escape cierra el menú",
+   "pass": true
+  },
+  {
+   "area": "menu",
+   "name": "Enlace «Cotizar» de subpágina lleva a la portada #cotizador",
+   "pass": true,
+   "detail": {
+    "top": 74,
+    "path": "/"
+   }
+  },
+  {
+   "area": "navegacion",
+   "name": "Enlaces internos y anclas válidos (19)",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "cotizador",
+   "name": "Sin precios autorizados: muestra «Por confirmar» y «sujeta a validación»; tarjetas sin importes",
+   "pass": true,
+   "detail": [
+    "Por confirmar",
+    "Cotización sujeta a validación",
+    [
+     "Precio por confirmar",
+     "Precio por confirmar",
+     "Precio por confirmar",
+     "Precio por confirmar"
+    ]
+   ]
+  },
+  {
+   "area": "precios",
+   "name": "No se publican importes históricos no autorizados (550/1125/1189/1470)",
+   "pass": true
+  },
+  {
+   "area": "cotizador",
+   "name": "Tarjetas preseleccionan paquete y tratamiento en el cotizador",
+   "pass": true,
+   "detail": [
+    "progresivo",
+    "triple",
+    "Progresivo",
+    "Triple combinación"
+   ]
+  },
+  {
+   "area": "calculos",
+   "name": "Suma autorizada 1000+200+300 = 1500",
+   "pass": true,
+   "detail": {
+    "estado": "autorizado",
+    "total": 1500,
+    "motivo": "Precio autorizado de lista, sujeto a confirmar tu receta en sucursal."
+   }
+  },
+  {
+   "area": "calculos",
+   "name": "Adicionales en 0 autorizados = solo base",
+   "pass": true,
+   "detail": {
+    "estado": "autorizado",
+    "total": 1000,
+    "motivo": "Precio autorizado de lista, sujeto a confirmar tu receta en sucursal."
+   }
+  },
+  {
+   "area": "calculos",
+   "name": "Paquete no autorizado → validación",
+   "pass": true
+  },
+  {
+   "area": "calculos",
+   "name": "Precio null aunque autorizado → validación (null nunca es gratis)",
+   "pass": true
+  },
+  {
+   "area": "calculos",
+   "name": "Precio negativo rechazado",
+   "pass": true
+  },
+  {
+   "area": "calculos",
+   "name": "Graduación especial → revisión",
+   "pass": true
+  },
+  {
+   "area": "calculos",
+   "name": "Servicio personalizado → validación",
+   "pass": true
+  },
+  {
+   "area": "calculos",
+   "name": "Sin receta con precio autorizado → aviso de confirmación",
+   "pass": true,
+   "detail": {
+    "estado": "autorizado",
+    "total": 1500,
+    "motivo": "Precio autorizado de lista. Se confirmará al revisar tu graduación."
+   }
+  },
+  {
+   "area": "whatsapp",
+   "name": "Abre wa.me/522294090925 con paquete, material, tratamiento, graduación, sucursal y precio",
+   "pass": true,
+   "detail": "👋 ¡Hola! Encontré MX Óptica en su sitio web.\nMe interesa: Progresivo\nMaterial: Policarbonato\nTratamiento: Triple combinación\nGraduación: Mi graduación es alta o especial\nSucursal: Plaza Maryn · Boca del Río\nPrecio: por confirmar\nConsulta: Soy Ana Prueba, mi tel 2290000000, correo ana@example.com, graduación -6.50\nReferencia de origen: web MX Óptica / sitio_directo\n¿Me ayudan con una cotización?"
+  },
+  {
+   "area": "whatsapp",
+   "name": "Botón #wa-send visible y sin el mensaje en el href",
+   "pass": true,
+   "detail": "https://wa.me/522294090925"
+  },
+  {
+   "area": "ga4",
+   "name": "Una sola configuración G-1YKC3ZT1P1",
+   "pass": true
+  },
+  {
+   "area": "ga4",
+   "name": "cotizacion_solicitud una vez con parámetros de lista cerrada",
+   "pass": true,
+   "detail": [
+    [
+     "event",
+     "cotizacion_solicitud",
+     {
+      "tipo_lente": "progresivo",
+      "material": "policarbonato",
+      "tratamiento": "triple",
+      "sucursal": "plaza_maryn"
+     }
+    ]
+   ]
+  },
+  {
+   "area": "ga4",
+   "name": "whatsapp_click una vez por clic (mensaje preparado y flotante)",
+   "pass": true,
+   "detail": [
+    [
+     "event",
+     "whatsapp_click",
+     {
+      "link_location": "cotizador_mensaje",
+      "page_type": "inicio"
+     }
+    ],
+    [
+     "event",
+     "whatsapp_click",
+     {
+      "link_location": "flotante",
+      "page_type": "inicio"
+     }
+    ]
+   ]
+  },
+  {
+   "area": "ga4",
+   "name": "Sin datos personales en dataLayer (nombre, tel, correo, graduación, texto libre)",
+   "pass": true
+  },
+  {
+   "area": "seo",
+   "name": "/ título, descripción, canonical mxoptica.com, 1 h1, JSON-LD válido",
+   "pass": true,
+   "detail": {
+    "title": "MX Óptica | Lentes graduados en Veracruz y Boca del Río",
+    "desc": "MX Óptica tiene sucursales en Plaza Bravo, Veracruz Centro y Plaza Maryn, Boca del Río. Conoce servicios, horarios y solicita cotización por WhatsApp.",
+    "canon": "https://mxoptica.com/",
+    "og": "https://mxoptica.com/",
+    "h1": 1,
+    "lang": "es-MX",
+    "ld": [
+     true
+    ],
+    "imgNoAlt": 0,
+    "robotsMeta": null
+   }
+  },
+  {
+   "area": "seo",
+   "name": "/sucursales/plaza-bravo/ título, descripción, canonical mxoptica.com, 1 h1, JSON-LD válido",
+   "pass": true,
+   "detail": {
+    "title": "MX Óptica Plaza Bravo | Óptica en Veracruz, Veracruz",
+    "desc": "MX Óptica Plaza Bravo, Nicolás Bravo 823, locales 21 y 22, Centro, Veracruz, Ver., C. P. 91700. Horario: Lunes a viernes 10:00–19:00; sábado 10:00–17:00; domingo cerrado. WhatsApp 229 409 0925.",
+    "canon": "https://mxoptica.com/sucursales/plaza-bravo/",
+    "og": "https://mxoptica.com/sucursales/plaza-bravo/",
+    "h1": 1,
+    "lang": "es-MX",
+    "ld": [
+     true
+    ],
+    "imgNoAlt": 0,
+    "robotsMeta": null
+   }
+  },
+  {
+   "area": "seo",
+   "name": "/sucursales/plaza-maryn/ título, descripción, canonical mxoptica.com, 1 h1, JSON-LD válido",
+   "pass": true,
+   "detail": {
+    "title": "MX Óptica Plaza Maryn | Óptica en Boca del Río, Veracruz",
+    "desc": "MX Óptica Plaza Maryn, Calzada Costa Verde 563, local 112, Costa Verde, Boca del Río, Ver., C. P. 94294. Horario: Lunes a viernes 11:00–19:00; sábado 11:00–14:00; domingo cerrado. WhatsApp 229 409 0925.",
+    "canon": "https://mxoptica.com/sucursales/plaza-maryn/",
+    "og": "https://mxoptica.com/sucursales/plaza-maryn/",
+    "h1": 1,
+    "lang": "es-MX",
+    "ld": [
+     true
+    ],
+    "imgNoAlt": 0,
+    "robotsMeta": null
+   }
+  },
+  {
+   "area": "seo",
+   "name": "/servicios/lentes-graduados/ título, descripción, canonical mxoptica.com, 1 h1, JSON-LD válido",
+   "pass": true,
+   "detail": {
+    "title": "Lentes graduados en Veracruz y Boca del Río | MX Óptica",
+    "desc": "Conoce opciones de lentes graduados en MX Óptica. Paquetes y materiales sujetos a receta, características del lente y cotización confirmada.",
+    "canon": "https://mxoptica.com/servicios/lentes-graduados/",
+    "og": "https://mxoptica.com/servicios/lentes-graduados/",
+    "h1": 1,
+    "lang": "es-MX",
+    "ld": [
+     true
+    ],
+    "imgNoAlt": 0,
+    "robotsMeta": null
+   }
+  },
+  {
+   "area": "seo",
+   "name": "/servicios/cambio-de-micas/ título, descripción, canonical mxoptica.com, 1 h1, JSON-LD válido",
+   "pass": true,
+   "detail": {
+    "title": "Cambio de micas en Veracruz y Boca del Río | MX Óptica",
+    "desc": "Pregunta por el cambio de micas de tus armazones actuales en MX Óptica. Compatibilidad y precios sujetos a revisión.",
+    "canon": "https://mxoptica.com/servicios/cambio-de-micas/",
+    "og": "https://mxoptica.com/servicios/cambio-de-micas/",
+    "h1": 1,
+    "lang": "es-MX",
+    "ld": [
+     true
+    ],
+    "imgNoAlt": 0,
+    "robotsMeta": null
+   }
+  },
+  {
+   "area": "seo",
+   "name": "/servicios/examen-de-la-vista/ título, descripción, canonical mxoptica.com, 1 h1, JSON-LD válido",
+   "pass": true,
+   "detail": {
+    "title": "Examen de la vista en Veracruz y Boca del Río | MX Óptica",
+    "desc": "Consulta la disponibilidad y condiciones de examen de la vista en las sucursales MX Óptica de Veracruz y Boca del Río.",
+    "canon": "https://mxoptica.com/servicios/examen-de-la-vista/",
+    "og": "https://mxoptica.com/servicios/examen-de-la-vista/",
+    "h1": 1,
+    "lang": "es-MX",
+    "ld": [
+     true
+    ],
+    "imgNoAlt": 0,
+    "robotsMeta": null
+   }
+  },
+  {
+   "area": "seo",
+   "name": "/servicios/lentes-progresivos/ título, descripción, canonical mxoptica.com, 1 h1, JSON-LD válido",
+   "pass": true,
+   "detail": {
+    "title": "Lentes progresivos en Veracruz y Boca del Río | MX Óptica",
+    "desc": "Información sobre lentes progresivos y cotización según graduación, material y tratamientos en MX Óptica.",
+    "canon": "https://mxoptica.com/servicios/lentes-progresivos/",
+    "og": "https://mxoptica.com/servicios/lentes-progresivos/",
+    "h1": 1,
+    "lang": "es-MX",
+    "ld": [
+     true
+    ],
+    "imgNoAlt": 0,
+    "robotsMeta": null
+   }
+  },
+  {
+   "area": "seo",
+   "name": "sitemap.xml con 7 URLs que coinciden con las páginas",
+   "pass": true,
+   "detail": [
+    "https://mxoptica.com/",
+    "https://mxoptica.com/sucursales/plaza-bravo/",
+    "https://mxoptica.com/sucursales/plaza-maryn/",
+    "https://mxoptica.com/servicios/lentes-graduados/",
+    "https://mxoptica.com/servicios/cambio-de-micas/",
+    "https://mxoptica.com/servicios/examen-de-la-vista/",
+    "https://mxoptica.com/servicios/lentes-progresivos/"
+   ]
+  },
+  {
+   "area": "seo",
+   "name": "robots.txt intacto (Allow / y Sitemap)",
+   "pass": true
+  },
+  {
+   "area": "a11y",
+   "name": "390px / axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "390px /sucursales/plaza-bravo/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "390px /sucursales/plaza-maryn/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "390px /servicios/lentes-graduados/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "390px /servicios/cambio-de-micas/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "390px /servicios/examen-de-la-vista/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "390px /servicios/lentes-progresivos/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "1440px / axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "1440px /sucursales/plaza-bravo/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "1440px /sucursales/plaza-maryn/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "1440px /servicios/lentes-graduados/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "1440px /servicios/cambio-de-micas/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "1440px /servicios/examen-de-la-vista/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "1440px /servicios/lentes-progresivos/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "Primer Tab enfoca «Ir al contenido» y funciona",
+   "pass": true,
+   "detail": [
+    "skip",
+    "#contenido"
+   ]
+  },
+  {
+   "area": "rendimiento",
+   "name": "móvil 390 + 4G simulada: LCP < 2.5 s y CLS < 0.1",
+   "pass": true,
+   "detail": {
+    "fcp": 568,
+    "lcp": 580,
+    "cls": 0,
+    "dcl": 583,
+    "kb": 448,
+    "requests": 8
+   }
+  },
+  {
+   "area": "rendimiento",
+   "name": "escritorio 1440: LCP < 2.5 s y CLS < 0.1",
+   "pass": true,
+   "detail": {
+    "fcp": 84,
+    "lcp": 84,
+    "cls": 0,
+    "dcl": 54,
+    "kb": 448,
+    "requests": 8
+   }
+  },
+  {
+   "area": "seguridad",
+   "name": "Sin credenciales, Mercado Pago, panel admin ni almacenamiento local en archivos públicos",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "seguridad",
+   "name": "Único script externo: Google Tag (GA4)",
+   "pass": true,
+   "detail": [
+    "https://www.googletagmanager.com/gtag/js?id=G-1YKC3ZT1P1"
+   ]
+  },
+  {
+   "area": "seguridad",
+   "name": "Todos los target=_blank con rel=noopener",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "seguridad",
+   "name": "_headers: nosniff, DENY, Referrer-Policy, CSP (report-only), noindex solo en *.pages.dev",
+   "pass": true
+  },
+  {
+   "area": "seguridad",
+   "name": "CSP aplicada en modo estricto: sin violaciones en las 7 páginas (local)",
+   "pass": true,
+   "detail": []
+  }
+ ]
+}
