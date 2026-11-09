@@ -1,34 +1,44 @@
-/* MX Óptica · Tabla pública de precios del cotizador (V5).
-   REGLA: solo cambiar "autorizado" a true con aprobación expresa y por escrito de la dirección comercial.
-   - precio: importe de venta al público en MXN (número) o null si no está definido.
-   - Paquetes: precio base. Materiales y tratamientos: importe ADICIONAL al paquete.
-   - Nunca usar 0 para representar "pendiente": usar null.
-   Las referencias históricas documentadas en Drive (Monofocal Básico 550, Protección Digital 1125,
-   Bifocal 1189, Progresivo 1470) NO están autorizadas y por eso no se publican aquí.
-   Este archivo es público: nunca incluir costos internos, márgenes ni credenciales. */
+/* MX Óptica · Tabla pública de precios (V5.1) — ÚNICA fuente de verdad del sitio y del cotizador.
+   Fuente: información comercial proporcionada por el propietario en el chat de trabajo del 2026-11-09.
+   Reglas:
+   - Todos los importes son «DESDE» (MXN) y se validan según graduación.
+   - precio:null = «precio por confirmar». Nunca usar 0 para representar «pendiente».
+   - «incluye»: tratamientos ya incluidos en el paquete; el cotizador nunca los cobra dos veces.
+   - Materiales Hi-Index / Super Hi-Index: mutuamente excluyentes (un solo escalón) y solo en monofocales;
+     en bifocales y progresivos se cotizan en sucursal.
+   - La promoción de $980 no incluye antirreflejante y no se acumula con otras promociones.
+   - Este archivo es público: nunca incluir costos internos, márgenes ni credenciales. */
 window.MX_PRECIOS = Object.freeze({
-  version: '2026-11-09',
+  version: '2026-11-09 · V5.1',
   paquetes: {
-    'monofocal-basico':   { precio: null, autorizado: false },
-    'proteccion-digital': { precio: null, autorizado: false },
-    'bifocal':            { precio: null, autorizado: false },
-    'progresivo':         { precio: null, autorizado: false }
-  },
-  materiales: {
-    'recomendacion': { precio: null, autorizado: false },
-    'resina':        { precio: null, autorizado: false },
-    'policarbonato': { precio: null, autorizado: false },
-    'alto-indice':   { precio: null, autorizado: false }
+    'mono-br-promo': { nombre: 'Monofocal Blue Ray · Promoción', tipo: 'monofocal', precio: 980,  autorizado: true, incluye: ['blue-ray'], promocion: true, admiteAdicionales: false,
+                       nota: 'Promoción. No incluye antirreflejante. No acumulable con otras promociones.' },
+    'mono-br':       { nombre: 'Monofocal Blue Ray',                  tipo: 'monofocal', precio: 1125, autorizado: true, incluye: ['blue-ray'] },
+    'mono-br-ar':    { nombre: 'Monofocal Blue Ray + Antirreflejante', tipo: 'monofocal', precio: 1415, autorizado: true, incluye: ['blue-ray', 'antirreflejante'] },
+    'mono-basico':   { nombre: 'Monofocal Básico',                    tipo: 'monofocal', precio: null, autorizado: false, incluye: [] },
+    'foto-completo': { nombre: 'Fotocromático completo',              tipo: null,        precio: null, autorizado: false, incluye: ['fotocromatico'] },
+    'bifocal':       { nombre: 'Bifocal Básico',                      tipo: 'bifocal',   precio: 899,  autorizado: true, incluye: [] },
+    'bifocal-ar':    { nombre: 'Bifocal Antirreflejante',             tipo: 'bifocal',   precio: 1189, autorizado: true, incluye: ['antirreflejante'] },
+    'progresivo':    { nombre: 'Progresivo Básico',                   tipo: 'progresivo', precio: 1470, autorizado: true, incluye: [] },
+    'progresivo-ar': { nombre: 'Progresivo Antirreflejante',          tipo: 'progresivo', precio: 1760, autorizado: true, incluye: ['antirreflejante'] }
   },
   tratamientos: {
-    'no-se':           { precio: null, autorizado: false },
-    'sin-tratamiento': { precio: 0,    autorizado: true  }, /* sin tratamiento = sin adicional */
-    'antirreflejante': { precio: null, autorizado: false },
-    'blue-ray':        { precio: null, autorizado: false },
-    'fotocromatico':   { precio: null, autorizado: false },
-    'ar-blue':         { precio: null, autorizado: false },
-    'ar-foto':         { precio: null, autorizado: false },
-    'blue-foto':       { precio: null, autorizado: false },
-    'triple':          { precio: null, autorizado: false }
+    'antirreflejante': { nombre: 'Antirreflejante', precio: 290, autorizado: true },
+    'blue-ray':        { nombre: 'Blue Ray',        precio: 575, autorizado: true },
+    'fotocromatico':   { nombre: 'Fotocromático',   precio: 675, autorizado: true }
+  },
+  materiales: {
+    'estandar':       { nombre: 'Estándar',       precio: 0,    autorizado: true },
+    'hi-index':       { nombre: 'Hi-Index',       precio: 400,  autorizado: true, soloTipos: ['monofocal'] },
+    'super-hi-index': { nombre: 'Super Hi-Index', precio: 1090, autorizado: true, soloTipos: ['monofocal'] }
+  },
+  promociones: {
+    'buen-fin-2026': {
+      nombre: 'Buen Fin: 2 pares completos', precio: 2499, autorizado: true,
+      inicio: '2026-11-13T00:00:00-06:00',   /* hora del centro de México */
+      fin:    '2026-11-17T23:59:59-06:00',
+      combinable: false,                      /* no se mezcla con la promoción de $980 */
+      condiciones: null                       /* PENDIENTE: texto exacto del propietario. null = «Condiciones por confirmar en sucursal». */
+    }
   }
 });

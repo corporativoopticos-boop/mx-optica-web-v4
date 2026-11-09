@@ -1,0 +1,1539 @@
+{
+ "fecha": "2026-11-09T03:17:47.294Z",
+ "total": 134,
+ "fallos": 0,
+ "results": [
+  {
+   "area": "responsive",
+   "name": "360px / sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 360,
+    "iw": 360,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "360px / sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "360px /sucursales/plaza-bravo/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 360,
+    "iw": 360,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "360px /sucursales/plaza-bravo/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "360px /sucursales/plaza-maryn/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 360,
+    "iw": 360,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "360px /sucursales/plaza-maryn/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "360px /servicios/lentes-graduados/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 360,
+    "iw": 360,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "360px /servicios/lentes-graduados/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "360px /servicios/cambio-de-micas/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 360,
+    "iw": 360,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "360px /servicios/cambio-de-micas/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "360px /servicios/examen-de-la-vista/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 360,
+    "iw": 360,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "360px /servicios/examen-de-la-vista/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "360px /servicios/lentes-progresivos/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 360,
+    "iw": 360,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "360px /servicios/lentes-progresivos/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "390px / sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 390,
+    "iw": 390,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "390px / sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "390px /sucursales/plaza-bravo/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 390,
+    "iw": 390,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "390px /sucursales/plaza-bravo/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "390px /sucursales/plaza-maryn/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 390,
+    "iw": 390,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "390px /sucursales/plaza-maryn/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "390px /servicios/lentes-graduados/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 390,
+    "iw": 390,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "390px /servicios/lentes-graduados/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "390px /servicios/cambio-de-micas/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 390,
+    "iw": 390,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "390px /servicios/cambio-de-micas/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "390px /servicios/examen-de-la-vista/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 390,
+    "iw": 390,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "390px /servicios/examen-de-la-vista/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "390px /servicios/lentes-progresivos/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 390,
+    "iw": 390,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "390px /servicios/lentes-progresivos/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "430px / sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 430,
+    "iw": 430,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "430px / sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "430px /sucursales/plaza-bravo/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 430,
+    "iw": 430,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "430px /sucursales/plaza-bravo/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "430px /sucursales/plaza-maryn/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 430,
+    "iw": 430,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "430px /sucursales/plaza-maryn/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "430px /servicios/lentes-graduados/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 430,
+    "iw": 430,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "430px /servicios/lentes-graduados/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "430px /servicios/cambio-de-micas/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 430,
+    "iw": 430,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "430px /servicios/cambio-de-micas/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "430px /servicios/examen-de-la-vista/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 430,
+    "iw": 430,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "430px /servicios/examen-de-la-vista/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "430px /servicios/lentes-progresivos/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 430,
+    "iw": 430,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "430px /servicios/lentes-progresivos/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "1440px / sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 1440,
+    "iw": 1440,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "1440px / sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "1440px /sucursales/plaza-bravo/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 1440,
+    "iw": 1440,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "1440px /sucursales/plaza-bravo/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "1440px /sucursales/plaza-maryn/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 1440,
+    "iw": 1440,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "1440px /sucursales/plaza-maryn/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "1440px /servicios/lentes-graduados/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 1440,
+    "iw": 1440,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "1440px /servicios/lentes-graduados/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "1440px /servicios/cambio-de-micas/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 1440,
+    "iw": 1440,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "1440px /servicios/cambio-de-micas/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "1440px /servicios/examen-de-la-vista/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 1440,
+    "iw": 1440,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "1440px /servicios/examen-de-la-vista/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "responsive",
+   "name": "1440px /servicios/lentes-progresivos/ sin desbordamiento horizontal",
+   "pass": true,
+   "detail": {
+    "sw": 1440,
+    "iw": 1440,
+    "wide": []
+   }
+  },
+  {
+   "area": "robustez",
+   "name": "1440px /servicios/lentes-progresivos/ sin errores JS ni recursos rotos",
+   "pass": true,
+   "detail": {
+    "errs": [],
+    "bad": []
+   }
+  },
+  {
+   "area": "video",
+   "name": "Video se carga y reproduce (readyState≥3, 720×1280)",
+   "pass": true,
+   "detail": {
+    "ready": 4,
+    "paused": false,
+    "playing": true,
+    "vw": 720,
+    "vh": 1280,
+    "src": "hero-v2-background.mp4",
+    "poster": 720,
+    "toggle": true
+   }
+  },
+  {
+   "area": "video",
+   "name": "Póster cargado (720 px) y botón pausar visible",
+   "pass": true,
+   "detail": {
+    "ready": 4,
+    "paused": false,
+    "playing": true,
+    "vw": 720,
+    "vh": 1280,
+    "src": "hero-v2-background.mp4",
+    "poster": 720,
+    "toggle": true
+   }
+  },
+  {
+   "area": "video",
+   "name": "Botón pausa detiene el video",
+   "pass": true,
+   "detail": [
+    true,
+    "Reproducir video"
+   ]
+  },
+  {
+   "area": "video",
+   "name": "prefers-reduced-motion: sin video, póster visible, contenido sin animación oculta",
+   "pass": true,
+   "detail": {
+    "video": false,
+    "poster": 720,
+    "revealHidden": 0
+   }
+  },
+  {
+   "area": "menu",
+   "name": "Menú móvil cerrado al inicio",
+   "pass": true
+  },
+  {
+   "area": "menu",
+   "name": "Menú abre y aria-expanded=true",
+   "pass": true
+  },
+  {
+   "area": "menu",
+   "name": "Escape cierra el menú",
+   "pass": true
+  },
+  {
+   "area": "menu",
+   "name": "Enlace «Cotizar» de subpágina lleva a la portada #cotizador",
+   "pass": true,
+   "detail": {
+    "top": 74,
+    "path": "/"
+   }
+  },
+  {
+   "area": "navegacion",
+   "name": "Enlaces internos y anclas válidos (19)",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "calculos",
+   "name": "Promoción $980 sola = desde $980",
+   "pass": true,
+   "detail": {
+    "e": "desde",
+    "t": 980,
+    "m": "Precio desde. Se confirma al validar tu graduación en sucursal.",
+    "d": [
+     980
+    ]
+   }
+  },
+  {
+   "area": "calculos",
+   "name": "Promoción $980 + antirreflejante o material especial → no se suma (por confirmar)",
+   "pass": true,
+   "detail": [
+    {
+     "e": "validacion",
+     "t": null,
+     "m": "La promoción de $980 no incluye antirreflejante ni se combina con adicionales. Elige «Monofocal Blue Ray» para agregarlos, o pide orientación.",
+     "d": []
+    },
+    {
+     "e": "validacion",
+     "t": null,
+     "m": "La promoción de $980 no incluye antirreflejante ni se combina con adicionales. Elige «Monofocal Blue Ray» para agregarlos, o pide orientación.",
+     "d": []
+    }
+   ]
+  },
+  {
+   "area": "calculos",
+   "name": "Promoción $980 + Blue Ray (ya incluido) = $980 sin duplicar",
+   "pass": true,
+   "detail": {
+    "e": "desde",
+    "t": 980,
+    "m": "Precio desde. Se confirma al validar tu graduación en sucursal.",
+    "d": [
+     980
+    ]
+   }
+  },
+  {
+   "area": "calculos",
+   "name": "Monofocal BR $1,125 + AR $290 = $1,415 = paquete BR+AR",
+   "pass": true,
+   "detail": [
+    {
+     "e": "desde",
+     "t": 1415,
+     "m": "Precio desde. Se confirma al validar tu graduación en sucursal.",
+     "d": [
+      1125,
+      290
+     ]
+    },
+    {
+     "e": "desde",
+     "t": 1415,
+     "m": "Precio desde. Se confirma al validar tu graduación en sucursal.",
+     "d": [
+      1415
+     ]
+    }
+   ]
+  },
+  {
+   "area": "calculos",
+   "name": "Sin duplicar tratamientos incluidos (BR en BR; AR y BR en BR+AR; repetidos)",
+   "pass": true,
+   "detail": [
+    {
+     "e": "desde",
+     "t": 1125,
+     "m": "Precio desde. Se confirma al validar tu graduación en sucursal.",
+     "d": [
+      1125
+     ]
+    },
+    {
+     "e": "desde",
+     "t": 1415,
+     "m": "Precio desde. Se confirma al validar tu graduación en sucursal.",
+     "d": [
+      1415
+     ]
+    }
+   ]
+  },
+  {
+   "area": "calculos",
+   "name": "Hi-Index +$400 en monofocal ($1,525); Super Hi-Index +$1,090 con fotocromático ($3,180)",
+   "pass": true,
+   "detail": [
+    {
+     "e": "desde",
+     "t": 1525,
+     "m": "Precio desde. Se confirma al validar tu graduación en sucursal.",
+     "d": [
+      1125,
+      400
+     ]
+    },
+    {
+     "e": "desde",
+     "t": 3180,
+     "m": "Precio desde. Se confirma al validar tu graduación en sucursal.",
+     "d": [
+      1415,
+      675,
+      1090
+     ]
+    }
+   ]
+  },
+  {
+   "area": "calculos",
+   "name": "Material desconocido → por confirmar",
+   "pass": true,
+   "detail": {
+    "e": "validacion",
+    "t": null,
+    "m": "Material por confirmar en sucursal.",
+    "d": []
+   }
+  },
+  {
+   "area": "calculos",
+   "name": "Hi-Index / Super Hi-Index NO se aplican a bifocal ni progresivo",
+   "pass": true,
+   "detail": [
+    {
+     "e": "validacion",
+     "t": null,
+     "m": "En bifocales y progresivos los materiales especiales se cotizan en sucursal.",
+     "d": []
+    },
+    {
+     "e": "validacion",
+     "t": null,
+     "m": "En bifocales y progresivos los materiales especiales se cotizan en sucursal.",
+     "d": []
+    }
+   ]
+  },
+  {
+   "area": "calculos",
+   "name": "Bifocal $899 + AR = $1,189 y Progresivo $1,470 + AR = $1,760 (coinciden con paquetes AR)",
+   "pass": true
+  },
+  {
+   "area": "calculos",
+   "name": "Progresivo AR + Blue Ray + Fotocromático = $3,010; Bifocal AR + BR = $1,764",
+   "pass": true,
+   "detail": [
+    {
+     "e": "desde",
+     "t": 3010,
+     "m": "Precio desde. Se confirma al validar tu graduación en sucursal.",
+     "d": [
+      1760,
+      575,
+      675
+     ]
+    },
+    {
+     "e": "desde",
+     "t": 1764,
+     "m": "Precio desde. Se confirma al validar tu graduación en sucursal.",
+     "d": [
+      1189,
+      575
+     ]
+    }
+   ]
+  },
+  {
+   "area": "calculos",
+   "name": "Monofocal básico y Fotocromático completo → precio por confirmar",
+   "pass": true
+  },
+  {
+   "area": "calculos",
+   "name": "Examen visual → gratuito, sin importe; servicios → personalizado",
+   "pass": true
+  },
+  {
+   "area": "calculos",
+   "name": "Graduación especial → precio desde con aviso de revisión",
+   "pass": true,
+   "detail": {
+    "e": "desde",
+    "t": 1125,
+    "m": "Precio desde. Tu graduación requiere revisión y podría cambiar material o precio.",
+    "d": [
+     1125
+    ],
+    "rev": true
+   }
+  },
+  {
+   "area": "promociones",
+   "name": "Buen Fin: estados próxima / vigente (inicio y último segundo) / finalizada en hora de México",
+   "pass": true,
+   "detail": [
+    "proxima",
+    "vigente",
+    "vigente",
+    "finalizada"
+   ]
+  },
+  {
+   "area": "promociones",
+   "name": "Buen Fin: sin precio antes y después; $2,499 durante la vigencia",
+   "pass": true
+  },
+  {
+   "area": "promociones",
+   "name": "Buen Fin no combinable: los adicionales no se suman",
+   "pass": true,
+   "detail": {
+    "e": "promo",
+    "t": 2499,
+    "m": "Promoción no combinable: los adicionales o materiales especiales se cotizan por separado en sucursal.",
+    "d": [
+     2499
+    ]
+   }
+  },
+  {
+   "area": "precios",
+   "name": "Precios del HTML estático idénticos a los calculados desde precios.js",
+   "pass": true,
+   "detail": {
+    "staticP": [
+     [
+      "mono-br-promo",
+      "Desde $980"
+     ],
+     [
+      "mono-br",
+      "Desde $1,125"
+     ],
+     [
+      "mono-br-ar",
+      "Desde $1,415"
+     ],
+     [
+      "mono-basico",
+      "Precio por confirmar"
+     ],
+     [
+      "bifocal",
+      "Desde $899"
+     ],
+     [
+      "bifocal-ar",
+      "Desde $1,189"
+     ],
+     [
+      "progresivo",
+      "Desde $1,470"
+     ],
+     [
+      "progresivo-ar",
+      "Desde $1,760"
+     ],
+     [
+      "foto-completo",
+      "Precio por confirmar"
+     ]
+    ],
+    "live": [
+     [
+      "mono-br-promo",
+      "Desde $980"
+     ],
+     [
+      "mono-br",
+      "Desde $1,125"
+     ],
+     [
+      "mono-br-ar",
+      "Desde $1,415"
+     ],
+     [
+      "mono-basico",
+      "Precio por confirmar"
+     ],
+     [
+      "bifocal",
+      "Desde $899"
+     ],
+     [
+      "bifocal-ar",
+      "Desde $1,189"
+     ],
+     [
+      "progresivo",
+      "Desde $1,470"
+     ],
+     [
+      "progresivo-ar",
+      "Desde $1,760"
+     ],
+     [
+      "foto-completo",
+      "Precio por confirmar"
+     ]
+    ]
+   }
+  },
+  {
+   "area": "precios",
+   "name": "Precios publicados = información del propietario (7 «desde» y 2 «por confirmar»)",
+   "pass": true,
+   "detail": [
+    [
+     "mono-br-promo",
+     "Desde $980"
+    ],
+    [
+     "mono-br",
+     "Desde $1,125"
+    ],
+    [
+     "mono-br-ar",
+     "Desde $1,415"
+    ],
+    [
+     "mono-basico",
+     "Precio por confirmar"
+    ],
+    [
+     "bifocal",
+     "Desde $899"
+    ],
+    [
+     "bifocal-ar",
+     "Desde $1,189"
+    ],
+    [
+     "progresivo",
+     "Desde $1,470"
+    ],
+    [
+     "progresivo-ar",
+     "Desde $1,760"
+    ],
+    [
+     "foto-completo",
+     "Precio por confirmar"
+    ]
+   ]
+  },
+  {
+   "area": "precios",
+   "name": "Adicionales publicados: AR +$290, Blue Ray +$575, Fotocromático +$675, Hi-Index +$400, Super Hi-Index +$1,090",
+   "pass": true,
+   "detail": [
+    "antirreflejante=+$290",
+    "blue-ray=+$575",
+    "fotocromatico=+$675",
+    "hi-index=+$400",
+    "super-hi-index=+$1,090"
+   ]
+  },
+  {
+   "area": "promociones",
+   "name": "Interfaz Buen Fin 2026-11-09 → proxima",
+   "pass": true,
+   "detail": {
+    "hidden": false,
+    "state": "Próximamente",
+    "opt": "disabled",
+    "optText": "Buen Fin: 2 pares completos (próximamente)",
+    "cta": false,
+    "faq": false
+   }
+  },
+  {
+   "area": "promociones",
+   "name": "Interfaz Buen Fin 2026-11-14 → vigente",
+   "pass": true,
+   "detail": {
+    "hidden": false,
+    "state": "Promoción vigente",
+    "opt": "enabled",
+    "optText": "Buen Fin: 2 pares completos",
+    "cta": true,
+    "faq": false
+   }
+  },
+  {
+   "area": "promociones",
+   "name": "Durante Buen Fin el botón selecciona la promoción y muestra $2,499 (2 pares)",
+   "pass": true,
+   "detail": [
+    "buen-fin-2026",
+    "$2,499",
+    "Promoción Buen Fin · 2 pares"
+   ]
+  },
+  {
+   "area": "promociones",
+   "name": "Interfaz Buen Fin 2026-11-18 → finalizada",
+   "pass": true,
+   "detail": {
+    "hidden": true,
+    "state": "Próximamente",
+    "opt": "removed",
+    "optText": null,
+    "cta": false,
+    "faq": true
+   }
+  },
+  {
+   "area": "whatsapp",
+   "name": "Botón «Abrir el mensaje preparado» oculto hasta preparar la cotización",
+   "pass": true,
+   "detail": "none"
+  },
+  {
+   "area": "cotizador",
+   "name": "Estado inicial: promoción $980, Blue Ray «Incluido», otros adicionales bloqueados, precio desde $980",
+   "pass": true,
+   "detail": {
+    "pkg": "mono-br-promo",
+    "trt": [
+     "antirreflejante:off/bloq:+$290",
+     "blue-ray:on/bloq:Incluido",
+     "fotocromatico:off/bloq:+$675"
+    ],
+    "mat": [
+     "estandar*",
+     "hi-index/bloq",
+     "super-hi-index/bloq"
+    ],
+    "precio": "Desde $980",
+    "live": "Desde $980",
+    "estado": "Precio desde · sujeto a validación",
+    "desglose": [
+     "Monofocal Blue Ray · Promoción$980"
+    ]
+   }
+  },
+  {
+   "area": "cotizador",
+   "name": "Monofocal BR + AR + Hi-Index = desde $1,815 con desglose",
+   "pass": true,
+   "detail": {
+    "pkg": "mono-br",
+    "trt": [
+     "antirreflejante:on:+$290",
+     "blue-ray:on/bloq:Incluido",
+     "fotocromatico:off:+$675"
+    ],
+    "mat": [
+     "estandar",
+     "hi-index*",
+     "super-hi-index"
+    ],
+    "precio": "Desde $1,815",
+    "live": "Desde $1,815",
+    "estado": "Precio desde · sujeto a validación",
+    "desglose": [
+     "Monofocal Blue Ray$1,125",
+     "Antirreflejante$290",
+     "Material Hi-Index$400"
+    ]
+   }
+  },
+  {
+   "area": "cotizador",
+   "name": "Hi-Index y Super Hi-Index excluyentes en la interfaz (solo uno marcado)",
+   "pass": true,
+   "detail": {
+    "pkg": "mono-br",
+    "trt": [
+     "antirreflejante:on:+$290",
+     "blue-ray:on/bloq:Incluido",
+     "fotocromatico:off:+$675"
+    ],
+    "mat": [
+     "estandar",
+     "hi-index",
+     "super-hi-index*"
+    ],
+    "precio": "Desde $2,505",
+    "live": "Desde $2,505",
+    "estado": "Precio desde · sujeto a validación",
+    "desglose": [
+     "Monofocal Blue Ray$1,125",
+     "Antirreflejante$290",
+     "Material Super Hi-Index$1,090"
+    ]
+   }
+  },
+  {
+   "area": "cotizador",
+   "name": "Al elegir progresivo: material vuelve a estándar y Hi-Index se bloquea; AR queda «Incluido»",
+   "pass": true,
+   "detail": {
+    "pkg": "progresivo-ar",
+    "trt": [
+     "antirreflejante:on/bloq:Incluido",
+     "blue-ray:off:+$575",
+     "fotocromatico:off:+$675"
+    ],
+    "mat": [
+     "estandar*",
+     "hi-index/bloq",
+     "super-hi-index/bloq"
+    ],
+    "precio": "Desde $1,760",
+    "live": "Desde $1,760",
+    "estado": "Precio desde · sujeto a validación",
+    "desglose": [
+     "Progresivo Antirreflejante$1,760"
+    ]
+   }
+  },
+  {
+   "area": "cotizador",
+   "name": "Tarjeta «Agregar» marca el tratamiento en el cotizador (Progresivo AR + Fotocromático = $2,435)",
+   "pass": true,
+   "detail": {
+    "pkg": "progresivo-ar",
+    "trt": [
+     "antirreflejante:on/bloq:Incluido",
+     "blue-ray:off:+$575",
+     "fotocromatico:on:+$675"
+    ],
+    "mat": [
+     "estandar*",
+     "hi-index/bloq",
+     "super-hi-index/bloq"
+    ],
+    "precio": "Desde $2,435",
+    "live": "Desde $2,435",
+    "estado": "Precio desde · sujeto a validación",
+    "desglose": [
+     "Progresivo Antirreflejante$1,760",
+     "Fotocromático$675"
+    ]
+   }
+  },
+  {
+   "area": "whatsapp",
+   "name": "Mensaje prellenado con paquete, tratamientos incluidos, material, sucursal y «desde $1,415»",
+   "pass": true,
+   "detail": "👋 ¡Hola! Quiero cotizar mis lentes en MX Óptica.\nPaquete: Monofocal Blue Ray + Antirreflejante\nTratamientos: Blue Ray (incluido), Antirreflejante (incluido)\nMaterial: Estándar\nGraduación: Tengo receta\nSucursal: Plaza Maryn · Boca del Río\nPrecio mostrado: desde $1,415 MXN (sujeto a validación de graduación)\nConsulta: Soy Ana Prueba, mi tel 2290000000, correo ana@example.com, graduación -6.50\nOrigen: web MX Óptica / sitio_directo"
+  },
+  {
+   "area": "whatsapp",
+   "name": "#wa-send sin el mensaje en el href",
+   "pass": true
+  },
+  {
+   "area": "ga4",
+   "name": "Una sola configuración G-1YKC3ZT1P1",
+   "pass": true
+  },
+  {
+   "area": "ga4",
+   "name": "cotizacion_solicitud una vez con listas cerradas + valor estimado (1415 MXN)",
+   "pass": true,
+   "detail": [
+    [
+     "event",
+     "cotizacion_solicitud",
+     {
+      "tipo_lente": "mono_br_ar",
+      "material": "estandar",
+      "tratamiento": "antirreflejante+blue_ray",
+      "sucursal": "plaza_maryn",
+      "value": 1415,
+      "currency": "MXN"
+     }
+    ]
+   ]
+  },
+  {
+   "area": "ga4",
+   "name": "whatsapp_click una vez por clic (flotante)",
+   "pass": true,
+   "detail": [
+    [
+     "event",
+     "whatsapp_click",
+     {
+      "link_location": "flotante",
+      "page_type": "inicio"
+     }
+    ]
+   ]
+  },
+  {
+   "area": "ga4",
+   "name": "Sin datos personales en dataLayer",
+   "pass": true
+  },
+  {
+   "area": "sucursales",
+   "name": "Mapa no se carga hasta pulsar; luego iframe de Google Maps con la dirección",
+   "pass": true,
+   "detail": {
+    "before": 0,
+    "src": "https://www.google.com/maps?q=Nicol%C3%A1s%20Bravo%20823%2C%20locales%2021%20y%2022%2C%20Centro%2C%20Veracruz%2C%20Veracruz%2C%20M%C3%A9xico&output=embed"
+   }
+  },
+  {
+   "area": "sucursales",
+   "name": "WhatsApp de sucursal con mensaje prellenado (Plaza Bravo)",
+   "pass": true,
+   "detail": "https://wa.me/522294090925?text=Hola, quiero información de MX Óptica Plaza Bravo."
+  },
+  {
+   "area": "sucursales",
+   "name": "Horarios Plaza Bravo sin cambios (L-V 10:00–19:00, Sáb 10:00–17:00)",
+   "pass": true,
+   "detail": "Lunes a viernes|10:00–19:00|Sábado|10:00–17:00|Domingo|Cerrado"
+  },
+  {
+   "area": "seo",
+   "name": "/ título, descripción, canonical mxoptica.com, 1 h1, JSON-LD válido",
+   "pass": true,
+   "detail": {
+    "title": "MX Óptica | Lentes graduados en Veracruz y Boca del Río",
+    "desc": "MX Óptica tiene sucursales en Plaza Bravo, Veracruz Centro y Plaza Maryn, Boca del Río. Conoce servicios, horarios y solicita cotización por WhatsApp.",
+    "canon": "https://mxoptica.com/",
+    "og": "https://mxoptica.com/",
+    "h1": 1,
+    "lang": "es-MX",
+    "ld": [
+     true
+    ],
+    "imgNoAlt": 0,
+    "robotsMeta": null
+   }
+  },
+  {
+   "area": "seo",
+   "name": "/sucursales/plaza-bravo/ título, descripción, canonical mxoptica.com, 1 h1, JSON-LD válido",
+   "pass": true,
+   "detail": {
+    "title": "MX Óptica Plaza Bravo | Óptica en Veracruz, Veracruz",
+    "desc": "MX Óptica Plaza Bravo, Nicolás Bravo 823, locales 21 y 22, Centro, Veracruz, Ver., C. P. 91700. Horario: Lunes a viernes 10:00–19:00; sábado 10:00–17:00; domingo cerrado. WhatsApp 229 409 0925.",
+    "canon": "https://mxoptica.com/sucursales/plaza-bravo/",
+    "og": "https://mxoptica.com/sucursales/plaza-bravo/",
+    "h1": 1,
+    "lang": "es-MX",
+    "ld": [
+     true
+    ],
+    "imgNoAlt": 0,
+    "robotsMeta": null
+   }
+  },
+  {
+   "area": "seo",
+   "name": "/sucursales/plaza-maryn/ título, descripción, canonical mxoptica.com, 1 h1, JSON-LD válido",
+   "pass": true,
+   "detail": {
+    "title": "MX Óptica Plaza Maryn | Óptica en Boca del Río, Veracruz",
+    "desc": "MX Óptica Plaza Maryn, Calzada Costa Verde 563, local 112, Costa Verde, Boca del Río, Ver., C. P. 94294. Horario: Lunes a viernes 11:00–19:00; sábado 11:00–14:00; domingo cerrado. WhatsApp 229 409 0925.",
+    "canon": "https://mxoptica.com/sucursales/plaza-maryn/",
+    "og": "https://mxoptica.com/sucursales/plaza-maryn/",
+    "h1": 1,
+    "lang": "es-MX",
+    "ld": [
+     true
+    ],
+    "imgNoAlt": 0,
+    "robotsMeta": null
+   }
+  },
+  {
+   "area": "seo",
+   "name": "/servicios/lentes-graduados/ título, descripción, canonical mxoptica.com, 1 h1, JSON-LD válido",
+   "pass": true,
+   "detail": {
+    "title": "Lentes graduados en Veracruz y Boca del Río | MX Óptica",
+    "desc": "Conoce opciones de lentes graduados en MX Óptica. Paquetes y materiales sujetos a receta, características del lente y cotización confirmada.",
+    "canon": "https://mxoptica.com/servicios/lentes-graduados/",
+    "og": "https://mxoptica.com/servicios/lentes-graduados/",
+    "h1": 1,
+    "lang": "es-MX",
+    "ld": [
+     true
+    ],
+    "imgNoAlt": 0,
+    "robotsMeta": null
+   }
+  },
+  {
+   "area": "seo",
+   "name": "/servicios/cambio-de-micas/ título, descripción, canonical mxoptica.com, 1 h1, JSON-LD válido",
+   "pass": true,
+   "detail": {
+    "title": "Cambio de micas en Veracruz y Boca del Río | MX Óptica",
+    "desc": "Pregunta por el cambio de micas de tus armazones actuales en MX Óptica. Compatibilidad y precios sujetos a revisión.",
+    "canon": "https://mxoptica.com/servicios/cambio-de-micas/",
+    "og": "https://mxoptica.com/servicios/cambio-de-micas/",
+    "h1": 1,
+    "lang": "es-MX",
+    "ld": [
+     true
+    ],
+    "imgNoAlt": 0,
+    "robotsMeta": null
+   }
+  },
+  {
+   "area": "seo",
+   "name": "/servicios/examen-de-la-vista/ título, descripción, canonical mxoptica.com, 1 h1, JSON-LD válido",
+   "pass": true,
+   "detail": {
+    "title": "Examen de la vista en Veracruz y Boca del Río | MX Óptica",
+    "desc": "Consulta la disponibilidad y condiciones de examen de la vista en las sucursales MX Óptica de Veracruz y Boca del Río.",
+    "canon": "https://mxoptica.com/servicios/examen-de-la-vista/",
+    "og": "https://mxoptica.com/servicios/examen-de-la-vista/",
+    "h1": 1,
+    "lang": "es-MX",
+    "ld": [
+     true
+    ],
+    "imgNoAlt": 0,
+    "robotsMeta": null
+   }
+  },
+  {
+   "area": "seo",
+   "name": "/servicios/lentes-progresivos/ título, descripción, canonical mxoptica.com, 1 h1, JSON-LD válido",
+   "pass": true,
+   "detail": {
+    "title": "Lentes progresivos en Veracruz y Boca del Río | MX Óptica",
+    "desc": "Información sobre lentes progresivos y cotización según graduación, material y tratamientos en MX Óptica.",
+    "canon": "https://mxoptica.com/servicios/lentes-progresivos/",
+    "og": "https://mxoptica.com/servicios/lentes-progresivos/",
+    "h1": 1,
+    "lang": "es-MX",
+    "ld": [
+     true
+    ],
+    "imgNoAlt": 0,
+    "robotsMeta": null
+   }
+  },
+  {
+   "area": "seo",
+   "name": "sitemap.xml con 7 URLs que coinciden con las páginas",
+   "pass": true,
+   "detail": [
+    "https://mxoptica.com/",
+    "https://mxoptica.com/sucursales/plaza-bravo/",
+    "https://mxoptica.com/sucursales/plaza-maryn/",
+    "https://mxoptica.com/servicios/lentes-graduados/",
+    "https://mxoptica.com/servicios/cambio-de-micas/",
+    "https://mxoptica.com/servicios/examen-de-la-vista/",
+    "https://mxoptica.com/servicios/lentes-progresivos/"
+   ]
+  },
+  {
+   "area": "seo",
+   "name": "robots.txt intacto (Allow / y Sitemap)",
+   "pass": true
+  },
+  {
+   "area": "a11y",
+   "name": "390px / axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "390px /sucursales/plaza-bravo/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "390px /sucursales/plaza-maryn/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "390px /servicios/lentes-graduados/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "390px /servicios/cambio-de-micas/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "390px /servicios/examen-de-la-vista/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "390px /servicios/lentes-progresivos/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "1440px / axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "1440px /sucursales/plaza-bravo/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "1440px /sucursales/plaza-maryn/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "1440px /servicios/lentes-graduados/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "1440px /servicios/cambio-de-micas/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "1440px /servicios/examen-de-la-vista/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "1440px /servicios/lentes-progresivos/ axe sin violaciones graves/críticas",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "a11y",
+   "name": "Primer Tab enfoca «Ir al contenido» y funciona",
+   "pass": true,
+   "detail": [
+    "skip",
+    "#contenido"
+   ]
+  },
+  {
+   "area": "rendimiento",
+   "name": "móvil 390 + 4G simulada: LCP < 2.5 s y CLS < 0.1",
+   "pass": true,
+   "detail": {
+    "fcp": 616,
+    "lcp": 644,
+    "cls": 0,
+    "dcl": 680,
+    "kb": 468,
+    "requests": 8
+   }
+  },
+  {
+   "area": "rendimiento",
+   "name": "escritorio 1440: LCP < 2.5 s y CLS < 0.1",
+   "pass": true,
+   "detail": {
+    "fcp": 96,
+    "lcp": 96,
+    "cls": 0,
+    "dcl": 72,
+    "kb": 468,
+    "requests": 8
+   }
+  },
+  {
+   "area": "seguridad",
+   "name": "Sin credenciales, Mercado Pago, panel admin ni almacenamiento local en archivos públicos",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "seguridad",
+   "name": "Único script externo: Google Tag (GA4)",
+   "pass": true,
+   "detail": [
+    "https://www.googletagmanager.com/gtag/js?id=G-1YKC3ZT1P1"
+   ]
+  },
+  {
+   "area": "seguridad",
+   "name": "Todos los target=_blank con rel=noopener",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "area": "seguridad",
+   "name": "_headers: nosniff, DENY, Referrer-Policy, CSP (report-only), noindex solo en *.pages.dev",
+   "pass": true
+  },
+  {
+   "area": "seguridad",
+   "name": "CSP aplicada en modo estricto: sin violaciones en las 7 páginas (local)",
+   "pass": true,
+   "detail": []
+  }
+ ]
+}

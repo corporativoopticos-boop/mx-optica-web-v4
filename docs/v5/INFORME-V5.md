@@ -104,3 +104,60 @@ Ver `docs/v5/capturas/`: `cmp-home-390.jpg`, `cmp-home-1440.jpg`, `cmp-paquetes-
 6. Pruebas en dispositivos físicos y en Safari iOS. También PageSpeed Insights sobre la vista previa.
 7. Pagos (Mercado Pago), panel administrativo con autenticación y backend: fuera de V5 y sin activar.
 8. Pasar V5 a producción requiere autorización expresa: PR de `develop/v5-cinematica` hacia `main`.
+
+---
+
+# Actualización V5.1 — 2026-11-09
+
+## Información comercial incorporada (proporcionada por el propietario en el chat)
+`sitio/assets/precios.js` es la única fuente de precios. El HTML estático se genera desde ella con `herramientas/v5_ensamblar_paginas.py`, y una prueba verifica que coincidan.
+
+| Paquete | Desde | Incluye |
+|---|---|---|
+| Monofocal Blue Ray · Promoción | $980 | Blue Ray. **No incluye antirreflejante**; no acumulable; sin adicionales en línea |
+| Monofocal Blue Ray | $1,125 | Blue Ray |
+| Monofocal Blue Ray + Antirreflejante | $1,415 | Blue Ray, antirreflejante |
+| Bifocal Básico / Antirreflejante | $899 / $1,189 | — / antirreflejante |
+| Progresivo Básico / Antirreflejante | $1,470 / $1,760 | — / antirreflejante |
+| Monofocal Básico, Fotocromático completo | Precio por confirmar | — |
+
+- Adicionales: antirreflejante +$290, Blue Ray +$575, fotocromático +$675. Nunca se cobran si el paquete ya los incluye.
+- Materiales: Hi-Index +$400 y Super Hi-Index +$1,090. Son excluyentes (un solo escalón) y se calculan **solo en monofocales**; en bifocales y progresivos pasan a «por confirmar».
+- Buen Fin: 2 pares completos por $2,499, del 13 al 17 de noviembre de 2026, en hora del centro de México.
+  - Antes de esa fecha muestra «Próximamente» y la opción del cotizador queda deshabilitada.
+  - Durante la vigencia muestra «Promoción vigente» y el cotizador calcula $2,499.
+  - Después se oculta de la portada, del cotizador y de las preguntas frecuentes.
+  - No combinable con la promoción de $980.
+- Contenido nuevo:
+  - Examen visual gratuito en la portada, en la página de examen y en las sucursales.
+  - Laboratorio propio.
+  - Mapas de Google cargados solo al pulsar (privacidad y rendimiento).
+  - WhatsApp con mensajes prellenados por contexto.
+  - Cotizador compacto con casillas, desglose y precio en vivo.
+  - Preguntas frecuentes actualizadas.
+- Horarios: **sin cambios**. Se conservan los oficiales; no hubo información nueva que validar.
+
+## Puntos que requieren confirmación del propietario
+1. **Condiciones exactas del Buen Fin**: no se recibieron en el chat. `condiciones: null` muestra «Condiciones por confirmar en sucursal». Al recibir el texto se coloca tal cual.
+2. **«Escala de recargos»**: no se recibieron rangos de graduación. Se interpretó como el escalón de material Hi-Index o Super Hi-Index (solo uno, solo en monofocales). Si existe una tabla por graduación, falta proporcionarla.
+3. **Promoción de $980 con adicionales**: se bloqueó agregar antirreflejante o materiales en línea; el cliente puede pedir orientación. Confirmar si se permite sumar antirreflejante (+$290).
+
+## Video
+Ver `docs/v5/PROPUESTA-VIDEO-V5.1.md`. No se produjo ni publicó video nuevo; el original sigue intacto (mismos SHA-256).
+
+## Pruebas V5.1 — 134/134 aprobadas
+Archivo `pruebas/v5/resultados-v5.1-2026-11-09.json`.
+- Cálculos con precios reales: 16 casos (sumas, sin duplicados, excluyentes, monofocal frente a bifocal/progresivo, promoción $980, por confirmar, examen gratuito, graduación especial).
+- Promociones: 6 pruebas, con reloj simulado antes, durante y después del Buen Fin, incluidos el primer y el último segundo.
+- Otras áreas:
+  - Interfaz del cotizador.
+  - WhatsApp.
+  - GA4: `cotizacion_solicitud` ahora incluye `value`/`currency` estimados y sigue sin datos personales.
+  - Mapas.
+  - Horarios.
+  - SEO.
+  - axe WCAG AA, 0 violaciones.
+  - Responsive 360/390/430/1440.
+  - Rendimiento.
+  - Seguridad.
+- Defecto encontrado y corregido: botones con atributo `hidden` que seguían visibles por `.btn{display:inline-flex}`.

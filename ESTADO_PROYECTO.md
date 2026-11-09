@@ -40,3 +40,10 @@ Indexabilidad técnica no garantiza indexación ni recomendación por ChatGPT. N
 - Cotizador V5 con paquetes, materiales, tratamientos, combinaciones y sucursal. Todos los precios están sin autorizar en `sitio/assets/precios.js`; no se publicó ningún importe.
 - 113/113 pruebas automatizadas (ver `docs/v5/INFORME-V5.md`).
 - Pendiente antes de producción: derechos de imagen y video, autorización de precios, aviso de privacidad, pruebas en dispositivos físicos y autorización expresa para fusionar con `main`.
+
+## V5.1 — 2026-11-09 (misma rama, PR #2 en borrador; producción sin cambios)
+- Precios del propietario incorporados en `sitio/assets/precios.js` (todos «desde»), adicionales, Hi-Index/Super Hi-Index (solo monofocales, excluyentes), promoción $980 sin antirreflejante ni acumulación.
+- Buen Fin 2×$2,499 (13–17 nov 2026) con estados automáticos; **condiciones exactas pendientes de recibir**.
+- Examen visual gratuito, laboratorio propio, mapas bajo demanda, WhatsApp prellenado, cotizador compacto y preguntas frecuentes. Horarios sin cambios.
+- Video: solo propuesta (`docs/v5/PROPUESTA-VIDEO-V5.1.md`); el original sigue publicado como respaldo.
+- 134/134 pruebas.

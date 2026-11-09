@@ -79,55 +79,132 @@ const isGoogle = (u) => /googletagmanager|google-analytics/.test(u);
     await ctx.close();
   }
 
-  // 4) Cotizador, cálculos, WhatsApp y GA4
+  // 4) Cotizador V5.1, cálculos con precios reales, promociones temporales, WhatsApp y GA4
   {
+    const D = (s) => new Date(s);
+    // 4a) Cálculos puros con la tabla real (assets/precios.js)
+    {
+      const ctx = await browser.newContext(); const page = await ctx.newPage(); await page.goto(BASE, { waitUntil: 'load' });
+      const R = await page.evaluate(() => {
+        const T = window.MX_PRECIOS, c = (paquete, tratamientos = [], material = 'estandar', receta = 'tengo-receta', now) => window.MXQuote.calc(T, { paquete, tratamientos, material, receta }, now ? new Date(now) : new Date('2026-11-09T12:00:00-06:00'));
+        const s = (r) => ({ e: r.estado, t: r.total, m: r.motivo, d: r.desglose.map(x => x.importe) });
+        return {
+          promo: s(c('mono-br-promo')), promoAR: s(c('mono-br-promo', ['antirreflejante'])), promoHI: s(c('mono-br-promo', [], 'hi-index')), promoBR: s(c('mono-br-promo', ['blue-ray'])),
+          brAR: s(c('mono-br', ['antirreflejante'])), brAR_pkg: s(c('mono-br-ar')), brDup: s(c('mono-br', ['blue-ray'])), brarDup: s(c('mono-br-ar', ['antirreflejante', 'blue-ray', 'antirreflejante'])),
+          hi: s(c('mono-br', [], 'hi-index')), shi: s(c('mono-br-ar', ['fotocromatico'], 'super-hi-index')), matInvalido: s(c('mono-br', [], 'ultra')),
+          bifHI: s(c('bifocal', [], 'hi-index')), progSHI: s(c('progresivo-ar', [], 'super-hi-index')),
+          bifAR: s(c('bifocal', ['antirreflejante'])), bifAR_pkg: s(c('bifocal-ar')), progAR: s(c('progresivo', ['antirreflejante'])), progAR_pkg: s(c('progresivo-ar')),
+          progFull: s(c('progresivo-ar', ['blue-ray', 'fotocromatico'])), bifBR: s(c('bifocal-ar', ['blue-ray'])),
+          monoBasico: s(c('mono-basico')), fotoCompleto: s(c('foto-completo')), examen: s(c('examen-visual')), micas: s(c('cambio-de-micas')),
+          especial: { ...s(c('mono-br', [], 'estandar', 'receta-especial')), rev: c('mono-br', [], 'estandar', 'receta-especial').revision },
+          bfAntes: s(c('buen-fin-2026', [], 'estandar', 'tengo-receta', '2026-11-12T23:59:59-06:00')), bfInicio: s(c('buen-fin-2026', [], 'estandar', 'tengo-receta', '2026-11-13T00:00:00-06:00')),
+          bfFin: s(c('buen-fin-2026', [], 'estandar', 'tengo-receta', '2026-11-17T23:59:59-06:00')), bfDespues: s(c('buen-fin-2026', [], 'estandar', 'tengo-receta', '2026-11-18T00:00:00-06:00')),
+          bfExtras: s(c('buen-fin-2026', ['antirreflejante'], 'hi-index', 'tengo-receta', '2026-11-15T12:00:00-06:00')),
+          estados: ['2026-11-12T23:59:59-06:00', '2026-11-13T00:00:00-06:00', '2026-11-17T23:59:59-06:00', '2026-11-18T00:00:00-06:00'].map(d => window.MXQuote.promoEstado(T.promociones['buen-fin-2026'], new Date(d)))
+        };
+      });
+      const eq = (r, t) => r.e === 'desde' && r.t === t;
+      rec('calculos', 'Promoción $980 sola = desde $980', eq(R.promo, 980), R.promo);
+      rec('calculos', 'Promoción $980 + antirreflejante o material especial → no se suma (por confirmar)', R.promoAR.e === 'validacion' && R.promoHI.e === 'validacion' && /no incluye antirreflejante/.test(R.promoAR.m), [R.promoAR, R.promoHI]);
+      rec('calculos', 'Promoción $980 + Blue Ray (ya incluido) = $980 sin duplicar', eq(R.promoBR, 980), R.promoBR);
+      rec('calculos', 'Monofocal BR $1,125 + AR $290 = $1,415 = paquete BR+AR', eq(R.brAR, 1415) && eq(R.brAR_pkg, 1415), [R.brAR, R.brAR_pkg]);
+      rec('calculos', 'Sin duplicar tratamientos incluidos (BR en BR; AR y BR en BR+AR; repetidos)', eq(R.brDup, 1125) && eq(R.brarDup, 1415), [R.brDup, R.brarDup]);
+      rec('calculos', 'Hi-Index +$400 en monofocal ($1,525); Super Hi-Index +$1,090 con fotocromático ($3,180)', eq(R.hi, 1525) && eq(R.shi, 1415 + 675 + 1090), [R.hi, R.shi]);
+      rec('calculos', 'Material desconocido → por confirmar', R.matInvalido.e === 'validacion', R.matInvalido);
+      rec('calculos', 'Hi-Index / Super Hi-Index NO se aplican a bifocal ni progresivo', R.bifHI.e === 'validacion' && R.progSHI.e === 'validacion', [R.bifHI, R.progSHI]);
+      rec('calculos', 'Bifocal $899 + AR = $1,189 y Progresivo $1,470 + AR = $1,760 (coinciden con paquetes AR)', eq(R.bifAR, 1189) && eq(R.bifAR_pkg, 1189) && eq(R.progAR, 1760) && eq(R.progAR_pkg, 1760));
+      rec('calculos', 'Progresivo AR + Blue Ray + Fotocromático = $3,010; Bifocal AR + BR = $1,764', eq(R.progFull, 3010) && eq(R.bifBR, 1764), [R.progFull, R.bifBR]);
+      rec('calculos', 'Monofocal básico y Fotocromático completo → precio por confirmar', R.monoBasico.e === 'validacion' && R.monoBasico.t === null && R.fotoCompleto.e === 'validacion');
+      rec('calculos', 'Examen visual → gratuito, sin importe; servicios → personalizado', R.examen.e === 'validacion' && /gratuito/.test(R.examen.m) && R.micas.e === 'validacion');
+      rec('calculos', 'Graduación especial → precio desde con aviso de revisión', eq(R.especial, 1125) && R.especial.rev === true && /revisión/.test(R.especial.m), R.especial);
+      rec('promociones', 'Buen Fin: estados próxima / vigente (inicio y último segundo) / finalizada en hora de México', JSON.stringify(R.estados) === JSON.stringify(['proxima', 'vigente', 'vigente', 'finalizada']), R.estados);
+      rec('promociones', 'Buen Fin: sin precio antes y después; $2,499 durante la vigencia', R.bfAntes.e === 'validacion' && R.bfDespues.e === 'validacion' && R.bfInicio.e === 'promo' && R.bfInicio.t === 2499 && R.bfFin.t === 2499);
+      rec('promociones', 'Buen Fin no combinable: los adicionales no se suman', R.bfExtras.e === 'promo' && R.bfExtras.t === 2499 && /no combinable/i.test(R.bfExtras.m), R.bfExtras);
+      // Texto estático (sin JS) = texto calculado desde precios.js
+      const raw = await (await page.request.get(BASE)).text();
+      const staticP = [...raw.matchAll(/data-price-for="([\w-]+)">([^<]+)</g)].map(m => [m[1], m[2]]);
+      const live = await page.$$eval('[data-price-for]', els => els.map(e => [e.dataset.priceFor, e.textContent]));
+      rec('precios', 'Precios del HTML estático idénticos a los calculados desde precios.js', staticP.length >= 9 && JSON.stringify(staticP) === JSON.stringify(live), { staticP, live });
+      const expected = { 'mono-br-promo': 'Desde $980', 'mono-br': 'Desde $1,125', 'mono-br-ar': 'Desde $1,415', 'mono-basico': 'Precio por confirmar', 'bifocal': 'Desde $899', 'bifocal-ar': 'Desde $1,189', 'progresivo': 'Desde $1,470', 'progresivo-ar': 'Desde $1,760', 'foto-completo': 'Precio por confirmar' };
+      rec('precios', 'Precios publicados = información del propietario (7 «desde» y 2 «por confirmar»)', live.every(([k, v]) => expected[k] === v), live);
+      const adds = await page.$$eval('[data-add-price],[data-mat-price]', els => els.map(e => (e.dataset.addPrice || e.dataset.matPrice) + '=' + e.textContent));
+      rec('precios', 'Adicionales publicados: AR +$290, Blue Ray +$575, Fotocromático +$675, Hi-Index +$400, Super Hi-Index +$1,090', JSON.stringify(adds) === JSON.stringify(['antirreflejante=+$290', 'blue-ray=+$575', 'fotocromatico=+$675', 'hi-index=+$400', 'super-hi-index=+$1,090']), adds);
+      await ctx.close();
+    }
+    // 4b) Promoción temporal en la interfaz con reloj simulado (antes, durante, después)
+    for (const [fecha, esperado] of [['2026-11-09T12:00:00-06:00', 'proxima'], ['2026-11-14T12:00:00-06:00', 'vigente'], ['2026-11-18T09:00:00-06:00', 'finalizada']]) {
+      const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } }); const page = await ctx.newPage();
+      await page.clock.setFixedTime(new Date(fecha));
+      await page.goto(BASE, { waitUntil: 'load' }); await page.waitForTimeout(300);
+      const u = await page.evaluate(() => { const box = document.querySelector('section[data-promo]'), o = document.querySelector('#tipo-lente option[value="buen-fin-2026"]'), faq = document.querySelector('details[data-promo]'); return { hidden: box.hidden, state: box.querySelector('[data-promo-state]').textContent, opt: o ? (o.disabled ? 'disabled' : 'enabled') : 'removed', optText: o && o.textContent, cta: (() => { const b = box.querySelector('[data-pick-pkg]'); return !box.hidden && getComputedStyle(b).display !== 'none' && b.getBoundingClientRect().height > 0; })(), faq: faq.hidden }; });
+      const okUI = esperado === 'proxima' ? (!u.hidden && u.state === 'Próximamente' && u.opt === 'disabled' && /próximamente/.test(u.optText) && !u.cta && !u.faq)
+        : esperado === 'vigente' ? (!u.hidden && u.state === 'Promoción vigente' && u.opt === 'enabled' && u.cta && !u.faq)
+        : (u.hidden && u.opt === 'removed' && u.faq);
+      rec('promociones', `Interfaz Buen Fin ${fecha.slice(0, 10)} → ${esperado}`, okUI, u);
+      if (esperado === 'vigente') {
+        await page.evaluate(() => document.querySelector('section[data-promo]').scrollIntoView({behavior:'instant',block:'center'})); await page.waitForTimeout(900);
+        await page.screenshot({ path: path.join(OUT, 'v51-buenfin-vigente-390.png') });
+        await page.click('[data-pick-pkg="buen-fin-2026"]'); await page.waitForTimeout(900);
+        const p = await page.evaluate(() => [document.getElementById('tipo-lente').value, document.getElementById('res-precio').textContent, document.getElementById('res-estado').textContent]);
+        rec('promociones', 'Durante Buen Fin el botón selecciona la promoción y muestra $2,499 (2 pares)', p[0] === 'buen-fin-2026' && p[1] === '$2,499' && /2 pares/.test(p[2]), p);
+      }
+      if (esperado === 'proxima') { await page.evaluate(() => document.querySelector('section[data-promo]').scrollIntoView({behavior:'instant',block:'center'})); await page.waitForTimeout(900); await page.screenshot({ path: path.join(OUT, 'v51-buenfin-proxima-390.png') }); }
+      await ctx.close();
+    }
+    // 4c) Interacción del cotizador, WhatsApp y GA4
     const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
     await ctx.addInitScript(() => { window.__opened = []; window.open = (u) => { window.__opened.push(u); return null; }; });
-    const page = await ctx.newPage(); await page.goto(BASE, { waitUntil: 'load' }); await page.waitForTimeout(500);
-    const st0 = await page.evaluate(() => [document.getElementById('res-precio').textContent, document.getElementById('res-estado').textContent, [...document.querySelectorAll('[data-price-for]')].map(e => e.textContent)]);
-    rec('cotizador', 'Sin precios autorizados: muestra «Por confirmar» y «sujeta a validación»; tarjetas sin importes', st0[0] === 'Por confirmar' && /validación/.test(st0[1]) && st0[2].every(t => t === 'Precio por confirmar'), st0);
-    const html = await page.content();
-    rec('precios', 'No se publican importes históricos no autorizados (550/1125/1189/1470)', !/\$\s?(550|1,?125|1,?189|1,?470)\b/.test(html));
-    // Atajo desde tarjeta
-    await page.click('[data-pick-pkg="progresivo"]'); await page.waitForTimeout(900);
-    await page.click('[data-pick-trt="triple"]').catch(async () => { await page.evaluate(() => document.querySelector('[data-pick-trt="triple"]').click()); }); await page.waitForTimeout(900);
-    const pick = await page.evaluate(() => [document.getElementById('tipo-lente').value, document.getElementById('tratamiento').value, document.getElementById('res-tipo').textContent, document.getElementById('res-tratamiento').textContent]);
-    rec('cotizador', 'Tarjetas preseleccionan paquete y tratamiento en el cotizador', pick[0] === 'progresivo' && pick[1] === 'triple' && pick[2] === 'Progresivo', pick);
-    await page.screenshot({ path: path.join(OUT, 'v5-cotizador-390.png'), fullPage: false });
-    // Cálculos (función pura con tabla de prueba; no altera precios reales)
-    const calc = await page.evaluate(() => {
-      const T = { paquetes: { a: { precio: 1000, autorizado: true }, b: { precio: 800, autorizado: false }, c: { precio: null, autorizado: true } }, materiales: { m: { precio: 200, autorizado: true }, z: { precio: 0, autorizado: true }, n: { precio: null, autorizado: false } }, tratamientos: { t: { precio: 300, autorizado: true }, s: { precio: 0, autorizado: true }, x: { precio: -5, autorizado: true } } };
-      const c = (paquete, material, tratamiento, receta = 'tengo-receta') => window.MXQuote.calc(T, { paquete, material, tratamiento, receta });
-      return { suma: c('a', 'm', 't'), cero: c('a', 'z', 's'), noAut: c('b', 'm', 't'), nulo: c('c', 'm', 't'), matNulo: c('a', 'n', 't'), negativo: c('a', 'm', 'x'), especial: c('a', 'm', 't', 'receta-especial'), servicio: c('cambio-de-micas', 'm', 't'), sinReceta: c('a', 'm', 't', 'necesito-orientacion') };
-    });
-    rec('calculos', 'Suma autorizada 1000+200+300 = 1500', calc.suma.estado === 'autorizado' && calc.suma.total === 1500, calc.suma);
-    rec('calculos', 'Adicionales en 0 autorizados = solo base', calc.cero.total === 1000, calc.cero);
-    rec('calculos', 'Paquete no autorizado → validación', calc.noAut.estado === 'validacion' && calc.noAut.total === null);
-    rec('calculos', 'Precio null aunque autorizado → validación (null nunca es gratis)', calc.nulo.estado === 'validacion' && calc.matNulo.estado === 'validacion');
-    rec('calculos', 'Precio negativo rechazado', calc.negativo.estado === 'validacion');
-    rec('calculos', 'Graduación especial → revisión', calc.especial.estado === 'validacion' && /especial/.test(calc.especial.motivo));
-    rec('calculos', 'Servicio personalizado → validación', calc.servicio.estado === 'validacion');
-    rec('calculos', 'Sin receta con precio autorizado → aviso de confirmación', calc.sinReceta.estado === 'autorizado' && /graduación/.test(calc.sinReceta.motivo), calc.sinReceta);
-    // Envío a WhatsApp con datos personales de prueba en el texto libre
-    await page.selectOption('#material', 'policarbonato'); await page.selectOption('#receta', 'receta-especial'); await page.selectOption('#sucursal', 'plaza-maryn');
-    await page.fill('#detalle', 'Soy Ana Prueba, mi tel 2290000000, correo ana@example.com, graduación -6.50');
+    const page = await ctx.newPage(); await page.clock.setFixedTime(new Date('2026-11-09T12:00:00-06:00'));
+    await page.goto(BASE, { waitUntil: 'load' }); await page.waitForTimeout(500);
+    const st = () => page.evaluate(() => ({ pkg: document.getElementById('tipo-lente').value, trt: [...document.querySelectorAll('input[name=trt]')].map(b => b.value + ':' + (b.checked ? 'on' : 'off') + (b.disabled ? '/bloq' : '') + ':' + b.closest('.opt').querySelector('.opt-tag').textContent), mat: [...document.querySelectorAll('input[name=material]')].map(r => r.value + (r.checked ? '*' : '') + (r.disabled ? '/bloq' : '')), precio: document.getElementById('res-precio').textContent, live: document.getElementById('live-precio').textContent, estado: document.getElementById('res-estado').textContent, desglose: [...document.querySelectorAll('#res-desglose li')].map(l => l.textContent) }));
+    const s0 = await st();
+    const waVis0 = await page.$eval('#wa-send', e => getComputedStyle(e).display);
+    rec('whatsapp', 'Botón «Abrir el mensaje preparado» oculto hasta preparar la cotización', waVis0 === 'none', waVis0);
+    rec('cotizador', 'Estado inicial: promoción $980, Blue Ray «Incluido», otros adicionales bloqueados, precio desde $980', s0.pkg === 'mono-br-promo' && s0.precio === 'Desde $980' && s0.live === 'Desde $980' && s0.trt.includes('blue-ray:on/bloq:Incluido') && s0.trt.includes('antirreflejante:off/bloq:+$290'), s0);
+    await page.selectOption('#tipo-lente', 'mono-br'); await page.check('input[name=trt][value=antirreflejante]'); await page.check('input[name=material][value=hi-index]');
+    const s1 = await st();
+    rec('cotizador', 'Monofocal BR + AR + Hi-Index = desde $1,815 con desglose', s1.precio === 'Desde $1,815' && JSON.stringify(s1.desglose) === JSON.stringify(['Monofocal Blue Ray$1,125', 'Antirreflejante$290', 'Material Hi-Index$400']), s1);
+    await page.check('input[name=material][value=super-hi-index]');
+    const s2 = await st();
+    rec('cotizador', 'Hi-Index y Super Hi-Index excluyentes en la interfaz (solo uno marcado)', s2.mat.filter(m => m.includes('*')).length === 1 && s2.mat.includes('super-hi-index*') && s2.precio === 'Desde $2,505', s2);
+    await page.selectOption('#tipo-lente', 'progresivo-ar');
+    const s3 = await st();
+    rec('cotizador', 'Al elegir progresivo: material vuelve a estándar y Hi-Index se bloquea; AR queda «Incluido»', s3.mat.includes('estandar*') && s3.mat.includes('hi-index/bloq') && s3.trt.includes('antirreflejante:on/bloq:Incluido') && s3.precio === 'Desde $1,760', s3);
+    await page.click('[data-pick-trt="fotocromatico"]').catch(() => page.evaluate(() => document.querySelector('[data-pick-trt="fotocromatico"]').click())); await page.waitForTimeout(900);
+    const s4 = await st();
+    rec('cotizador', 'Tarjeta «Agregar» marca el tratamiento en el cotizador (Progresivo AR + Fotocromático = $2,435)', s4.trt.includes('fotocromatico:on:+$675') && s4.precio === 'Desde $2,435', s4);
+    await page.screenshot({ path: path.join(OUT, 'v51-cotizador-390.png') });
+    // WhatsApp + GA4
+    await page.selectOption('#tipo-lente', 'mono-br-ar'); await page.selectOption('#sucursal', 'plaza-maryn'); await page.uncheck('input[name=trt][value=fotocromatico]');
+    await page.click('.more summary'); await page.fill('#detalle', 'Soy Ana Prueba, mi tel 2290000000, correo ana@example.com, graduación -6.50');
     const dl0 = await page.evaluate(() => dataLayer.length);
     await page.click('.quote-submit'); await page.waitForTimeout(400);
-    const out = await page.evaluate(() => ({ opened: window.__opened, href: document.getElementById('wa-send').getAttribute('href'), hidden: document.getElementById('wa-send').hidden }));
+    const out = await page.evaluate(() => ({ opened: window.__opened, href: document.getElementById('wa-send').getAttribute('href') }));
     const msg = decodeURIComponent((out.opened[0] || '').split('text=')[1] || '');
-    rec('whatsapp', 'Abre wa.me/522294090925 con paquete, material, tratamiento, graduación, sucursal y precio', out.opened.length === 1 && out.opened[0].startsWith('https://wa.me/522294090925?text=') && /Progresivo/.test(msg) && /Policarbonato/.test(msg) && /Triple/.test(msg) && /alta o especial/.test(msg) && /Plaza Maryn/.test(msg) && /Precio: por confirmar/.test(msg), msg);
-    rec('whatsapp', 'Botón #wa-send visible y sin el mensaje en el href', !out.hidden && out.href === 'https://wa.me/522294090925', out.href);
-    await page.click('#wa-send'); await page.waitForTimeout(200);
+    rec('whatsapp', 'Mensaje prellenado con paquete, tratamientos incluidos, material, sucursal y «desde $1,415»', out.opened.length === 1 && /Monofocal Blue Ray \+ Antirreflejante/.test(msg) && /Blue Ray \(incluido\)/.test(msg) && /Antirreflejante \(incluido\)/.test(msg) && /Material: Estándar/.test(msg) && /Plaza Maryn/.test(msg) && /desde \$1,415 MXN/.test(msg), msg);
+    rec('whatsapp', '#wa-send sin el mensaje en el href', out.href === 'https://wa.me/522294090925');
     await page.click('.wa-float'); await page.waitForTimeout(200);
-    const ev = await page.evaluate((n) => dataLayer.slice(n).map(x => Array.from(x)), dl0);
-    const dlAll = await page.evaluate(() => JSON.stringify(dataLayer));
-    const cot = ev.filter(e => e[0] === 'event' && e[1] === 'cotizacion_solicitud');
-    const wa = ev.filter(e => e[0] === 'event' && e[1] === 'whatsapp_click');
+    const ev = await page.evaluate((n) => dataLayer.slice(n).map(x => Array.from(x)), dl0); const dlAll = await page.evaluate(() => JSON.stringify(dataLayer));
+    const cot = ev.filter(e => e[0] === 'event' && e[1] === 'cotizacion_solicitud'), wa = ev.filter(e => e[0] === 'event' && e[1] === 'whatsapp_click');
     rec('ga4', 'Una sola configuración G-1YKC3ZT1P1', (await page.evaluate(() => dataLayer.filter(x => x[0] === 'config' && x[1] === 'G-1YKC3ZT1P1').length)) === 1);
-    rec('ga4', 'cotizacion_solicitud una vez con parámetros de lista cerrada', cot.length === 1 && JSON.stringify(cot[0][2]) === JSON.stringify({ tipo_lente: 'progresivo', material: 'policarbonato', tratamiento: 'triple', sucursal: 'plaza_maryn' }), cot);
-    rec('ga4', 'whatsapp_click una vez por clic (mensaje preparado y flotante)', wa.length === 2 && wa[0][2].link_location === 'cotizador_mensaje' && wa[1][2].link_location === 'flotante', wa);
-    rec('ga4', 'Sin datos personales en dataLayer (nombre, tel, correo, graduación, texto libre)', !/Ana|2290000000|example\.com|6\.50|receta/i.test(dlAll));
+    rec('ga4', 'cotizacion_solicitud una vez con listas cerradas + valor estimado (1415 MXN)', cot.length === 1 && JSON.stringify(cot[0][2]) === JSON.stringify({ tipo_lente: 'mono_br_ar', material: 'estandar', tratamiento: 'antirreflejante+blue_ray', sucursal: 'plaza_maryn', value: 1415, currency: 'MXN' }), cot);
+    rec('ga4', 'whatsapp_click una vez por clic (flotante)', wa.length === 1 && wa[0][2].link_location === 'flotante', wa);
+    rec('ga4', 'Sin datos personales en dataLayer', !/Ana|2290000000|example\.com|6\.50|receta/i.test(dlAll));
     await ctx.close();
+    // 4d) Mapa bajo demanda y WhatsApp prellenado de sucursal
+    {
+      const c2 = await browser.newContext({ viewport: { width: 390, height: 844 } }); const p2 = await c2.newPage();
+      await p2.route(/google\.com\/maps/, r => r.fulfill({ status: 200, contentType: 'text/html', body: '<p>mapa</p>' }));
+      await p2.goto(BASE + 'sucursales/plaza-bravo/'); const before = await p2.$$eval('iframe', f => f.length);
+      await p2.click('.map-load'); await p2.waitForTimeout(300);
+      const src = await p2.$eval('.map-embed iframe', f => f.src).catch(() => null);
+      const waHref = await p2.$eval('.hero-actions a[href*="wa.me"]', a => decodeURIComponent(a.href));
+      rec('sucursales', 'Mapa no se carga hasta pulsar; luego iframe de Google Maps con la dirección', before === 0 && !!src && src.startsWith('https://www.google.com/maps?q=Nicol') && /output=embed/.test(src), { before, src });
+      rec('sucursales', 'WhatsApp de sucursal con mensaje prellenado (Plaza Bravo)', /text=Hola, quiero información de MX Óptica Plaza Bravo\./.test(waHref), waHref);
+      const hours = await p2.$$eval('.hours td', t => t.map(x => x.textContent).join('|'));
+      rec('sucursales', 'Horarios Plaza Bravo sin cambios (L-V 10:00–19:00, Sáb 10:00–17:00)', hours === 'Lunes a viernes|10:00–19:00|Sábado|10:00–17:00|Domingo|Cerrado', hours);
+      await c2.close();
+    }
   }
 
   // 5) SEO

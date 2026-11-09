@@ -1,5 +1,19 @@
 import pathlib,re,sys,hashlib,base64
 root=pathlib.Path(sys.argv[1]); main_index=pathlib.Path(sys.argv[2]).read_text()
+import json,subprocess
+PR=json.loads(subprocess.check_output(['node','-e',"global.window={};require(process.argv[1]);console.log(JSON.stringify(window.MX_PRECIOS))",str((root/'assets/precios.js').resolve())]))
+def mx(n): return '${:,}'.format(n)
+def okp(e): return e and e.get('autorizado') and isinstance(e.get('precio'),(int,float)) and e['precio']>=0
+def expand(s):
+    s=re.sub(r'\{\{P:([\w-]+)\}\}',lambda m:('Desde '+mx(PR['paquetes'][m.group(1)]['precio'])) if okp(PR['paquetes'][m.group(1)]) else 'Precio por confirmar',s)
+    s=re.sub(r'\{\{T:([\w-]+)\}\}',lambda m:'+'+mx(PR['tratamientos'][m.group(1)]['precio']),s)
+    s=re.sub(r'\{\{M:([\w-]+)\}\}',lambda m:('+'+mx(PR['materiales'][m.group(1)]['precio'])) if PR['materiales'][m.group(1)]['precio'] else 'Incluido',s)
+    s=s.replace('{{BF}}',mx(PR['promociones']['buen-fin-2026']['precio']))
+    s=s.replace('{{MIN}}',mx(min(p['precio'] for p in PR['paquetes'].values() if okp(p))))
+    assert '{{' not in s, re.findall(r'\{\{[^}]*\}\}',s)
+    return s
+main_index=expand(main_index)
+
 JSCLASS="<script>document.documentElement.className=document.documentElement.className.replace('no-js','js')</script>"
 WA_SVG='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/><path d="M8.5 9.5c.3 2.2 2.3 4.4 4.9 5.2l1.4-1.2 2 1"/></svg>'
 def header(P,home):
@@ -37,6 +51,7 @@ for p in sorted(root.rglob('index.html')):
     else:
         m=re.search(r'<main id="contenido">.*?</main>',rest,re.S); assert m
         mn=m.group(0).replace(P+'index.html#',P+'#').replace('href="'+P+'index.html"','href="'+P+'"')
+        mn=expand(mn)
         body='<body><a class="skip" href="#contenido">Ir al contenido principal</a>\n'+header(P,False)+'\n'+mn+'\n'+footer(P)
     p.write_text(head+'</head>'+body); print('ok',p.relative_to(root))
 h=hashlib.sha256(JSCLASS[8:-9].encode()).digest(); print('js-class hash sha256-'+base64.b64encode(h).decode())

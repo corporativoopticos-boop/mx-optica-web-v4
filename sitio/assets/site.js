@@ -25,6 +25,17 @@
     items.forEach(el => io.observe(el));
   }
 
+  /* Mapas: se cargan desde Google Maps solo cuando la persona lo pide (privacidad y rendimiento). */
+  document.querySelectorAll('.map-embed').forEach(box => {
+    const b = box.querySelector('.map-load'); if (!b) return;
+    b.addEventListener('click', () => {
+      const f = document.createElement('iframe');
+      f.src = box.dataset.mapSrc; f.title = box.dataset.mapTitle || 'Mapa'; f.loading = 'lazy';
+      f.referrerPolicy = 'no-referrer-when-downgrade'; f.allowFullscreen = true;
+      box.replaceChildren(f);
+    }, {once: true});
+  });
+
   /* Video de portada: el póster siempre visible; el video solo se reproduce si el usuario no reduce movimiento ni ahorra datos. */
   const v = document.getElementById('heroVideo'), btn = document.getElementById('heroVideoToggle');
   if (!v) return;
