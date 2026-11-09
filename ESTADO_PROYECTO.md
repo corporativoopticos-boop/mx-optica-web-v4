@@ -32,3 +32,19 @@ Indexabilidad técnica no garantiza indexación ni recomendación por ChatGPT. N
 - www.mxoptica.com: no accesible según consulta externa, configurar como dominio personalizado y redirigir a raíz cuando sea posible.
 - Seguimiento automático existente: MX Óptica: seguimiento GEO, programado diariamente desde 2026-11-07, zona America/Mexico_City; no duplicar.
 - No garantizar aparecer ni posicionarse en ChatGPT. Revisar resultados reales y métricas en Search Console.
+
+## V5 cinematográfica — 2026-11-09 (rama aislada, NO en producción)
+- Rama de trabajo: `develop/v5-cinematica`. Producción (`main` = d9b89e0, V4 + GA4) sin cambios. Respaldo: rama `backup/v4-estable-2026-11-09` (el tag no se pudo subir: el proxy de git devolvió 403).
+- Referencia visual: V4.5 de Drive (SHA-256 verificado). Video y póster de la protagonista extraídos del ZIP V4.3 e idénticos byte a byte a los de V4.5. El PNG original no se encontró en Drive; no se sustituyó.
+- Siete páginas, SEO, JSON-LD, GA4 G-1YKC3ZT1P1 (whatsapp_click, cotizacion_solicitud), WhatsApp, sucursales, sitemap, robots y cabeceras conservados.
+- Cotizador V5 con paquetes, materiales, tratamientos, combinaciones y sucursal. Todos los precios están sin autorizar en `sitio/assets/precios.js`; no se publicó ningún importe.
+- 113/113 pruebas automatizadas (ver `docs/v5/INFORME-V5.md`).
+- Pendiente antes de producción: derechos de imagen y video, autorización de precios, aviso de privacidad, pruebas en dispositivos físicos y autorización expresa para fusionar con `main`.
+
+## V5.1 — 2026-11-09 (misma rama, PR #2 en borrador; producción sin cambios)
+- Precios del propietario incorporados en `sitio/assets/precios.js` (todos «desde»), adicionales, Hi-Index/Super Hi-Index (solo monofocales, excluyentes), promoción $980 sin antirreflejante ni acumulación.
+- Buen Fin 2×$2,499 (13–17 nov 2026) con estados automáticos; **condiciones exactas pendientes de recibir**.
+- Examen visual gratuito, laboratorio propio, mapas bajo demanda, WhatsApp prellenado, cotizador compacto y preguntas frecuentes. Horarios sin cambios.
+- Video: solo propuesta (`docs/v5/PROPUESTA-VIDEO-V5.1.md`); el original sigue publicado como respaldo.
+- 134/134 pruebas.
+- V5.1b: condiciones completas del Buen Fin y tabla de recargo por graduación (solo monofocales, un escalón). 145/145 pruebas. La prueba de video de 3 s está pendiente de un generador de imagen a video (ver `docs/v5/propuesta-video/PRUEBA-ESCENA1.md`).

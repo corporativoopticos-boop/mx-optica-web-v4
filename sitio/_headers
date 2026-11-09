@@ -1,5 +1,16 @@
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), camera=(), microphone=()
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=()
   X-Frame-Options: DENY
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'sha256-IGaFX+b5V7IqJhmXdrl4T+JbOgpi4PePGSAasrGBdpc=' 'sha256-2neNKQ2A4VI56Lsbz+8wvzD7uKvnEiOzR4y7CXYWWBc=' https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; media-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; frame-src https://www.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
+
+/media/*
+  Cache-Control: public, max-age=2592000
+
+# Vistas previas de Cloudflare Pages: nunca indexar (no afecta a mxoptica.com).
+https://:version.mx-optica-web-v4.pages.dev/*
+  X-Robots-Tag: noindex, nofollow
+
+https://mx-optica-web-v4.pages.dev/*
+  X-Robots-Tag: noindex, nofollow
