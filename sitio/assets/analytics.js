@@ -23,6 +23,6 @@
   const form = document.getElementById('cotizador-form');
   if (form) form.addEventListener('submit', function(){
     const val = (id) => { const el = document.getElementById(id); return el ? slug(el.value) : 'sin_especificar'; };
-    track('cotizacion_solicitud', { tipo_lente: val('tipo-lente'), tratamiento: val('tratamiento'), sucursal: val('sucursal') });
+    track('cotizacion_solicitud', { paquete: val('paquete'), tipo_lente: val('tipo-lente'), tratamiento: val('tratamiento'), sucursal: val('sucursal') });
   });
 })();
