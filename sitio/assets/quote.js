@@ -1,59 +1,59 @@
-/* Cotización preliminar sin precios no autorizados; datos solo se mandan con clic expreso. */
+/* MX Óptica — consulta sin pagos ni envíos automáticos. */
 (function(){
-  'use strict';
-  const form = document.getElementById('cotizador-form');
-  if (!form) return;
-  const $ = (id) => document.getElementById(id);
-  const $fields = ['tipo-lente','tratamiento','sucursal','receta','detalle'];
-  const titles = { 'plaza-bravo':'Plaza Bravo · Veracruz Centro', 'plaza-maryn':'Plaza Maryn · Boca del Río' };
-  const labelOf = (id) => { const el=$(id); return el?.selectedOptions?.[0]?.textContent?.trim() || el?.value?.trim() || 'Sin especificar'; };
-  const getSource = () => {
-    const q = new URLSearchParams(window.location.search);
-    const explicit = (q.get('utm_source') || '').replace(/[^\w.-]/g,'').slice(0,36);
-    if (explicit) return explicit;
-    try {
-      const host = new URL(document.referrer).hostname.toLowerCase();
-      if (host === 'chatgpt.com' || host.endsWith('.chatgpt.com')) return 'chatgpt';
-      if (host === 'www.google.com' || host.endsWith('.google.com') || host.endsWith('.google.com.mx')) return 'google';
-      if (host === 'www.facebook.com' || host.endsWith('.facebook.com')) return 'facebook';
-      if (host === 'www.instagram.com' || host.endsWith('.instagram.com')) return 'instagram';
-      return 'sitio_directo';
-    } catch(_) { return 'sitio_directo'; }
-  };
-  const summary = () => {
-    $('res-tipo').textContent = labelOf('tipo-lente');
-    $('res-tratamiento').textContent = labelOf('tratamiento');
-    $('res-sucursal').textContent = titles[$('sucursal').value] || labelOf('sucursal');
-    $('res-receta').textContent = labelOf('receta');
-  };
-  $fields.forEach(id => $(id)?.addEventListener('change', summary));
-  $('detalle')?.addEventListener('input', summary);
-  let preparedUrl='';
-  $('wa-send')?.addEventListener('click', function(ev){
-    if (!preparedUrl) return;
-    ev.preventDefault();
-    window.open(preparedUrl,'_blank','noopener,noreferrer');
-  });
-  form.addEventListener('submit',function(ev){
-    ev.preventDefault();
-    const tipo = labelOf('tipo-lente'); const tratamiento = labelOf('tratamiento');
-    const sucursal = titles[$('sucursal').value] || labelOf('sucursal');
-    const receta = labelOf('receta'); const detalle = $('detalle').value.trim().slice(0,500);
-    const msg = ['👋 ¡Hola! Encontré MX Óptica en su sitio web.',
-      'Me interesa: '+tipo,
-      'Tratamiento: '+tratamiento,
-      'Sucursal: '+sucursal,
-      'Tengo receta: '+receta,
-      'Consulta: '+(detalle || 'Quisiera conocer opciones, disponibilidad y precio.'),
-      'Referencia de origen: web MX Óptica / '+getSource(),
-      '¿Me ayudan con una cotización?'].join('\n');
-    const url='https://wa.me/522294090925?text='+encodeURIComponent(msg);
-    // El href queda sin el texto del mensaje para que ninguna herramienta de medición
-    // (p. ej. clics salientes de GA4) registre la consulta escrita por el cliente.
-    preparedUrl=url;
-    const link=$('wa-send'); if (link) { link.hidden=false; }
-    // Solo se abre WhatsApp por la acción explícita del cliente.
-    window.open(url,'_blank','noopener,noreferrer');
-  });
-  summary();
+'use strict';
+document.querySelectorAll('.mobile-menu-links a').forEach(link=>link.addEventListener('click',()=>{const m=link.closest('details');if(m)m.open=false;}));
+const form=document.getElementById('cotizador-form');if(!form)return;
+const $=id=>document.getElementById(id);
+const branches={'plaza-bravo':'Plaza Bravo · Veracruz Centro','plaza-maryn':'Plaza Maryn · Boca del Río'};
+const prices={'blue-promo':'$980','blue-regular':'$1,125','bifocal':'$899','progresivo':'$1,470'};
+const label=id=>{const el=$(id);return el?.selectedOptions?.[0]?.textContent?.trim()||el?.value?.trim()||'Sin especificar';};
+let preparedUrl='';
+function source(){
+ const q=new URLSearchParams(window.location.search),u=(q.get('utm_source')||'').replace(/[^\w.-]/g,'').slice(0,36);
+ if(u)return u;
+ try{const h=new URL(document.referrer).hostname.toLowerCase();
+ if(h==='chatgpt.com'||h.endsWith('.chatgpt.com'))return'chatgpt';
+ if(h.endsWith('.google.com')||h.endsWith('.google.com.mx'))return'google';
+ if(h.endsWith('.facebook.com'))return'facebook';
+ if(h.endsWith('.instagram.com'))return'instagram';}catch(_){}
+ return'sitio_directo';
+}
+function summary(){
+ $('res-tipo').textContent=label('tipo-lente');
+ $('res-paquete').textContent=label('paquete');
+ $('res-tratamiento').textContent=label('tratamiento');
+ $('res-sucursal').textContent=branches[$('sucursal').value]||label('sucursal');
+ $('res-receta').textContent=label('receta');
+ $('res-precio').textContent=prices[$('paquete').value]?'Paquete base: '+prices[$('paquete').value]+' · sujeto a condiciones':'Precio por confirmar';
+ preparedUrl='';const l=$('wa-send');if(l)l.hidden=true;
+}
+['paquete','tipo-lente','tratamiento','sucursal','receta'].forEach(id=>$(id)?.addEventListener('change',()=>{
+ if(id==='paquete'&&prices[$('paquete').value])$('tipo-lente').value='Lentes graduados completos';
+ if(id==='tipo-lente'&&$('tipo-lente').value!=='Lentes graduados completos')$('paquete').value='sin-definir';
+ summary();
+}));
+$('detalle')?.addEventListener('input',summary);
+document.querySelectorAll('[data-package]').forEach(link=>link.addEventListener('click',()=>{
+ if(!Object.prototype.hasOwnProperty.call(prices,link.dataset.package))return;
+ $('paquete').value=link.dataset.package;$('tipo-lente').value='Lentes graduados completos';
+ if($('tratamiento').value==='No sé cuál necesito')$('tratamiento').value='Sin tratamiento adicional';
+ summary(); // conserva sucursal
+}));
+$('wa-send')?.addEventListener('click',ev=>{ev.preventDefault();if(preparedUrl)window.open(preparedUrl,'_blank','noopener,noreferrer');});
+form.addEventListener('submit',ev=>{
+ ev.preventDefault();
+ const msg=['Hola, encontré MX Óptica en su sitio web.',
+ 'Paquete: '+label('paquete'),
+ 'Producto o servicio: '+label('tipo-lente'),
+ 'Tratamiento de interés: '+label('tratamiento'),
+ 'Sucursal: '+(branches[$('sucursal').value]||label('sucursal')),
+ 'Tengo receta: '+label('receta'),
+ 'Observaciones: '+($('detalle').value.trim().slice(0,500)||'Sin observaciones adicionales.'),
+ 'Origen: web MX Óptica / '+source(),
+ '¿Me ayudan a confirmar condiciones y disponibilidad?'].join('\n');
+ preparedUrl='https://wa.me/522294090925?text='+encodeURIComponent(msg);
+ const l=$('wa-send');if(l)l.hidden=false;
+ window.open(preparedUrl,'_blank','noopener,noreferrer');
+});
+summary();
 })();
