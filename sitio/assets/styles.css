@@ -6,7 +6,7 @@
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
 
 /* PR #3: responsive header and visible section anchors */
-html{scroll-padding-top:92px}:target{scroll-margin-top:92px}
+html{scroll-padding-top:0}:target{scroll-margin-top:0}
 .header-inner{gap:16px}.site-nav{flex-wrap:nowrap;gap:14px}.desktop-nav-links{display:flex;align-items:center;gap:18px}.desktop-nav-links a{white-space:nowrap}.header-cta{flex:0 0 auto;white-space:nowrap;color:#fff!important}.mobile-menu{display:none}
 .package-card{border-color:#9bd7e4;background:linear-gradient(160deg,#fff 60%,#edfaff)}
 .package-promo{border:2px solid #0a8296;background:linear-gradient(150deg,#e4faff,#fff 70%)}
@@ -29,3 +29,22 @@ html{scroll-padding-top:92px}:target{scroll-margin-top:92px}
 .section{padding:34px 0}.section-head{margin-bottom:16px}.hero{padding:28px 0 35px}.hero-actions{margin:17px 0}.highlights{margin-top:12px}.page-content{padding:29px 0 44px}.page-hero{padding:24px 0 32px}
 }
 @media(max-width:360px){.header-inner{gap:6px}.logo{font-size:.84rem;gap:6px}.logo-mark{width:28px;height:28px;flex:0 0 28px}.site-nav{gap:6px}.header-cta{padding:9px 12px;font-size:.87rem}}
+
+
+/* PR #3 fine tuning: one measured header offset; section padding is subtracted once. */
+:root{--header-height:77px;--section-pad-top:clamp(42px,7vw,84px)}
+#paquetes,#servicios,#sucursales,#preguntas,#cotizador{scroll-margin-top:max(0px,calc(var(--header-height) + 16px - var(--section-pad-top)))}
+#cotizador-form{scroll-margin-top:calc(var(--header-height) + 16px)}
+#service-type-row[hidden],#quote-selected[hidden],#wa-send[hidden]{display:none!important}
+.quote-grid{grid-template-columns:minmax(0,1fr)}
+.quote-selected{display:grid;gap:4px;padding:14px 16px;margin:0 0 14px;background:linear-gradient(125deg,#ddf9ff,#effefa);border:2px solid #86cbdc;border-radius:15px;color:#12394a}
+.quote-selected>span{font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;font-weight:850;color:#086c80}
+.quote-selected>strong{font-size:1.16rem;line-height:1.25;color:#0a3045}
+.quote-selected>b{font-size:1.75rem;line-height:1.15;color:#075a73}
+.quote-selected>small{font-size:.79rem;line-height:1.4;color:#31566a}
+.quote-mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px;margin:15px 0 0;padding:13px;background:#effafd;border:1px solid #aedbe5;border-radius:14px}
+.quote-mini>div{display:grid;gap:2px;min-width:0}
+.quote-mini span{font-size:.78rem;color:#27556a;font-weight:750}
+.quote-mini strong{font-size:.94rem;line-height:1.28;color:#0b3044;overflow-wrap:anywhere}
+@media(max-width:780px){:root{--section-pad-top:34px}}
+@media(max-width:360px){.quote-mini{gap:8px;padding:10px}.quote-mini strong{font-size:.87rem}}
